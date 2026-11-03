@@ -132,13 +132,14 @@ git diff --cached --stat
 git commit -m "Add validated refund proposals and reviewed sandbox execution"
 ```
 
-There was no Git remote configured during the checkpoint inspection. After
-creating an empty GitHub repository, substitute its actual URL below:
+The `origin` remote is configured for
+[suhith17/stripe-refund-agent](https://github.com/suhith17/stripe-refund-agent).
+After committing, push your current branch:
 
 ```bash
-git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO.git
 git push -u origin HEAD
 ```
 
-Never force-add `.env` or the database. The configured Gemini and Stripe keys
-were absent from Git-visible files during the inspection; recheck if you add files.
+Keep actual API keys in the ignored `.env` file. Before committing, review the
+staged files to ensure they contain no credentials or local databases. Commit
+only the empty-key `.env.example` template; never force-add `.env` or the database.
