@@ -8,3 +8,14 @@ __pycache__/
 *.db
 *.db-shm
 *.db-wal
+*.db-journal
+*.sqlite
+*.sqlite3
+*.sqlite*-shm
+*.sqlite*-wal
+*.sqlite*-journal
+instance/
+dependency-check.json
+*.log
+*.pem
+*.key
