@@ -65,7 +65,7 @@ class FallbackTests(unittest.TestCase):
         self.secondary.extract.assert_called_once()
 
     def test_eval_ignores_configured_fallback(self):
-        settings = Settings(Path("unused.db"), gemini_fallback_model="gemini-3.5-flash-lite")
+        settings = Settings(Path("unused.db"), gemini_model="gemini-3.8-flash", gemini_fallback_model="gemini-3.5-flash-lite")
         args = SimpleNamespace(m2_command="eval", limit=2, interval=0)
         with patch("payresolve.m2.GeminiExtractor", return_value=self.primary) as factory, \
                 patch("payresolve.m2.FallbackExtractor") as fallback, \
@@ -77,7 +77,7 @@ class FallbackTests(unittest.TestCase):
 
     def test_cli_analysis_uses_configured_fallback(self):
         with TemporaryDirectory() as directory:
-            settings = Settings(Path(directory) / "test.db", gemini_fallback_model="gemini-3.5-flash-lite")
+            settings = Settings(Path(directory) / "test.db", gemini_model="gemini-3.8-flash", gemini_fallback_model="gemini-3.5-flash-lite")
             args = SimpleNamespace(m2_command="analyze", message="Hello", request_id=None)
             self.primary.extract.side_effect = ExtractionError("gemini_service_unavailable", "Unavailable.", attempts=3)
             self.secondary.extract.return_value["intent"] = intent(intent="other").model_dump()

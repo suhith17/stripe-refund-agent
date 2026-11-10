@@ -1,0 +1,43 @@
+{
+  "study_id": "expanded-memory-v2-post-stop-continuation",
+  "status": "authorized_billing_change_retry",
+  "prepared_date": "2026-11-09",
+  "reason": "Both E48 blocks stopped on provider 429 responses with 24 scheduled trials untouched. The user subsequently reported adding USD 5 in AI Studio credit and explicitly requested an immediate retry of untouched trials. This post-stop continuation preserves the original stop snapshot and records the changed billing conditions.",
+  "original_freeze": "evals/conversations/protocols/expanded-freeze-v2.json",
+  "original_export": "evals/conversations/results/expanded-results-v2.json",
+  "original_export_sha256": "efde128460861a8c995b766f09ba4018546e6623de9bf28e58c9ce36d4219862",
+  "continuation_command": "tools/continue_expanded_after_cooldown.py",
+  "continuation_command_sha256": "9aa71aa435685020c3313323aa598d7feb3fef139dc55e18736c417dad9ac98c",
+  "original_outcomes": {
+    "scheduled": 172,
+    "attempted": 148,
+    "passed": 133,
+    "provider_failures": 14,
+    "behavior_or_oracle_failures": 1,
+    "untouched": 24
+  },
+  "source_runs": {
+    "primary": "2ccd2d0cd6234168bfa04edb4b9198ca",
+    "backup": "97e64b6f45104145a4012f7718401cb5"
+  },
+  "untouched_by_model": {
+    "gemini-3.5-flash-lite": 23,
+    "gemini-3.1-flash-lite": 1
+  },
+  "earliest_provider_cooldown_utc": "2026-11-10T07:59:58.483892+00:00",
+  "billing_change": {
+    "reported_date_local": "2026-11-09",
+    "user_reported_credit_usd": 5,
+    "authorized_retry_utc": "2026-11-10T00:43:26+00:00",
+    "observed_tier": "not independently confirmed before retry",
+    "local_action": "Remove only the old gemini-3.5-flash-lite and gemini-3.1-flash-lite cooldown rows once, preserving global request pacing and all original request-budget ledgers. The provider remains authoritative; stop on a fresh 429."
+  },
+  "user_reported_ai_studio_rpd_at_preparation": {
+    "gemini-3.5-flash-lite": "227/500",
+    "gemini-3.1-flash-lite": "165/500"
+  },
+  "quota_interpretation": "The displayed RPD counters are below their limits, but the 429 cause is still unknown. Neither the local 400-request ledger nor the displayed RPD figure overrides the provider cooldown.",
+  "collection_rule": "Keep application code, oracle, datasets, scenario order, model assignment, 15 RPM and 400-request-per-model cumulative ledgers unchanged. The documented billing change authorizes one earlier restart of each block after clearing its obsolete local timer. Copy prior attempted rows and failures unchanged; never replay attempted or partially started trials. Continue only artifact-checked untouched rows. Stop immediately on a new 429, access/configuration/budget/worker failure, or three consecutive availability failures. Pause at least 60 seconds after an ordinary service failure. Preserve all intermediate reports and record any new stop.",
+  "interpretation": "This is post-stop collection, not part of the original frozen stop decision. Report its results separately from the E48 stop snapshot and disclose the delay and any further missing trials. Do not attribute score changes solely to application repairs or rank models on different assigned cases.",
+  "stripe_calls": 0
+}

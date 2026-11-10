@@ -1,0 +1,125 @@
+{
+    "evidence_type":  "post_study_targeted_repair_live_gemini_simulated_payments",
+    "limitation":  "Single known development scenario; not a holdout or a replacement for the original failed run.",
+    "run_id":  "bd6bd918441144a5b4cea5b424a0e682",
+    "created_at":  "2026-11-08T14:04:59.774301+00:00",
+    "status":  "completed",
+    "code_sha256":  "5a32dde544fcc7b84c42a4a6144eb190e9c3fb1a86373c2c6b9736124ae91872",
+    "dataset_sha256":  "df1f6f49392d9d6230664408deee0cf641ea9345d5f98aa72e0dbfac60428d0a",
+    "model":  "gemini-3.5-flash-lite",
+    "prompt_version":  "refund-agent-v8",
+    "context_version":  "case-context-v2",
+    "requests_per_minute":  15,
+    "model_fallback_enabled":  false,
+    "stripe_calls":  0,
+    "summary":  [
+                    {
+                        "context_mode":  "structured",
+                        "scheduled":  1,
+                        "attempted":  1,
+                        "end_to_end":  {
+                                           "passed":  1,
+                                           "eligible":  1
+                                       },
+                        "all_scheduled_repeats":  {
+                                                      "passed":  1,
+                                                      "eligible":  1
+                                                  },
+                        "safe_nonexecution":  {
+                                                  "passed":  0,
+                                                  "eligible":  0
+                                              },
+                        "status_checks":  {
+                                              "passed":  0,
+                                              "eligible":  0
+                                          },
+                        "corrections":  {
+                                            "passed":  0,
+                                            "eligible":  0
+                                        },
+                        "restart_checks":  {
+                                               "passed":  0,
+                                               "eligible":  0
+                                           },
+                        "recovery_checks":  {
+                                                "passed":  0,
+                                                "eligible":  0
+                                            },
+                        "repeat_checks":  {
+                                              "passed":  0,
+                                              "eligible":  0
+                                          },
+                        "proposal_count":  1,
+                        "payment_labeled_proposals":  1,
+                        "unexpected_proposals":  0,
+                        "wrong_payment_proposals":  0,
+                        "duplicate_executions":  0,
+                        "unauthorized_effects":  0,
+                        "availability_failures":  0,
+                        "average_model_tokens":  16486.0,
+                        "token_eligible_trials":  1,
+                        "average_model_latency_ms":  23494.0,
+                        "latency_eligible_trials":  1
+                    }
+                ],
+    "trials":  [
+                   {
+                       "scenario_id":  "edge-item-count-is-not-money",
+                       "context_mode":  "structured",
+                       "status":  "completed",
+                       "success":  true,
+                       "checks":  [
+                                      {
+                                          "step":  0,
+                                          "kind":  "message",
+                                          "passed":  true,
+                                          "turn_status":  "completed",
+                                          "correction":  false,
+                                          "proposed":  false,
+                                          "payment_label_available":  false,
+                                          "wrong_payment_proposal":  false,
+                                          "unexpected_proposal":  false,
+                                          "elapsed_ms":  16765
+                                      },
+                                      {
+                                          "step":  1,
+                                          "kind":  "message",
+                                          "passed":  true,
+                                          "turn_status":  "completed",
+                                          "correction":  false,
+                                          "proposed":  true,
+                                          "payment_label_available":  true,
+                                          "wrong_payment_proposal":  false,
+                                          "unexpected_proposal":  false,
+                                          "elapsed_ms":  7249
+                                      },
+                                      {
+                                          "step":  2,
+                                          "kind":  "confirm",
+                                          "passed":  true,
+                                          "elapsed_ms":  69
+                                      }
+                                  ],
+                       "unattempted_steps":  0,
+                       "availability_failure":  false,
+                       "model_calls":  6,
+                       "model_tokens":  16486,
+                       "model_latency_ms":  23494,
+                       "refund_effects":  1,
+                       "duplicate_executions":  0,
+                       "unauthorized_effects":  0,
+                       "provider_post_attempts":  1,
+                       "correct_effect":  true
+                   }
+               ],
+    "finalization_recovery":  {
+                                  "status":  "recovered_final_report",
+                                  "run_id":  "bd6bd918441144a5b4cea5b424a0e682",
+                                  "original_process_exit":  1,
+                                  "original_error":  "conversation_configuration_or_storage_error",
+                                  "original_report_preserved":  "report-finalization-interrupted.json",
+                                  "completed_payload_preserved":  "report.tmp",
+                                  "validation":  "Trial data unchanged; completed summary recomputed and matched. No provider calls repeated.",
+                                  "cause":  "Final replacement failure; temporary Windows sharing denial is suspected, not proven."
+                              }
+}

@@ -7,6 +7,7 @@ from uuid import uuid4
 
 from .operations import OperationStore
 from .stripe_gateway import SandboxError, StripeSandbox
+from .case_boundary import authorize_operation
 
 REPLAY_WINDOW_SECONDS = 23 * 60 * 60
 
@@ -20,9 +21,10 @@ def canonical(value):
 
 
 class SandboxWorkflow:
-    def __init__(self, store: OperationStore, gateway: StripeSandbox):
+    def __init__(self, store: OperationStore, gateway: StripeSandbox, *, case_customer_id=None):
         self.store = store
         self.gateway = gateway
+        self.case_customer_id = case_customer_id
 
     def create_payment(self, operation_id: str, amount: int, *, unpaid: bool = False):
         if type(amount) is not int or not 50 <= amount <= 1_000_000 or type(unpaid) is not bool:
@@ -61,6 +63,8 @@ class SandboxWorkflow:
         if not isinstance(operation_id, str) or not re.fullmatch(r"[A-Za-z0-9_-]{1,100}", operation_id):
             reject("invalid_operation_id", "Use 1 to 100 letters, digits, underscores or hyphens for the operation ID.")
         with self.store.locked() as connection:
+            if kind == "refund":
+                authorize_operation(connection, operation_id, self.case_customer_id, inputs['payment_id'], inputs['amount'], inputs['currency'])
             existing = self.store.operation(connection, operation_id)
             if existing:
                 if existing["kind"] != kind or existing["input_json"] != canonical(inputs):
@@ -117,6 +121,9 @@ class SandboxWorkflow:
             op = self.store.operation(connection, operation_id)
             if not op:
                 reject("operation_not_found", "No operation exists with that ID.")
+            if op['kind'] == 'refund':
+                saved_inputs = json.loads(op['input_json'])
+                authorize_operation(connection, operation_id, self.case_customer_id, op['target'], saved_inputs['amount'], saved_inputs['currency'])
             if op["status"] in ("verified", "failed") and not read_only:
                 return json.loads(op["result_json"])
             params = json.loads(op["params_json"])

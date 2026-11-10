@@ -1,0 +1,15 @@
+{
+  "study_id": "memory-final-v2",
+  "amendment": "continue untouched trials after worker exit; no agent/prompt/validator/tool/label changes",
+  "created_at": "2026-11-07T17:52:16.505242+00:00",
+  "parent_run_id": "7ba696bc7b094b218f220aea2edb19e7",
+  "parent_attempted": 9,
+  "parent_completed_successfully": 7,
+  "parent_behavioral_failures": 1,
+  "parent_interrupted": 1,
+  "continued_trials": 45,
+  "code_sha256": "47a7dd5356eb36ce9c3c6542ebb167438f74e99f7a5849894615684e1d7237b3",
+  "driver": "tools/continue_conversation_study.py",
+  "driver_sha256": "a5235d5809bdade586395bfc01402bd08b89ea159ed34b8e15c4615b5f14e3cd",
+  "policy": "Preserve original report and all attempted trial results. Only copy trial configurations from artifact-free unattempted directories; same original order. No rerun of failed or partial trials. No fallback. Same stop-on-availability/worker-failure rule. Cumulative metrics retain original denominators and interruption. Diagnostic replay is excluded."
+}

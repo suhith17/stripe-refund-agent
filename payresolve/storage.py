@@ -5,6 +5,7 @@ from contextlib import contextmanager
 from datetime import datetime, timezone
 from pathlib import Path
 from uuid import uuid4
+from .case_boundary import deny_linked_request
 
 
 class RequestStore:
@@ -49,6 +50,7 @@ class RequestStore:
 
     def get(self, request_id: str) -> dict | None:
         with self.connect() as connection:
+            deny_linked_request(connection, request_id)
             row = connection.execute(
                 "SELECT id, message, status, created_at FROM refund_requests WHERE id = ?",
                 (request_id,),

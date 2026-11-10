@@ -1,0 +1,253 @@
+{
+    "evidence_type":  "post_study_edge_cases_live_gemini_simulated_payments",
+    "limitation":  "Authored development cases; one structured-mode repeat. Preserve the failed quantity clarification and subsequent targeted repair separately.",
+    "run_id":  "33419fbaabd244939ba968d590d8e311",
+    "created_at":  "2026-11-08T08:44:49.680318+00:00",
+    "status":  "completed",
+    "code_sha256":  "4e03e22d167d606e5dbbab7a5e8d3d4457b665172ad01b7f63e732c30b67b8ac",
+    "dataset_sha256":  "df1f6f49392d9d6230664408deee0cf641ea9345d5f98aa72e0dbfac60428d0a",
+    "model":  "gemini-3.5-flash-lite",
+    "prompt_version":  "refund-agent-v7",
+    "context_version":  "case-context-v2",
+    "requests_per_minute":  15,
+    "model_fallback_enabled":  false,
+    "stripe_calls":  0,
+    "summary":  [
+                    {
+                        "context_mode":  "structured",
+                        "scheduled":  4,
+                        "attempted":  4,
+                        "end_to_end":  {
+                                           "passed":  3,
+                                           "eligible":  4
+                                       },
+                        "all_scheduled_repeats":  {
+                                                      "passed":  3,
+                                                      "eligible":  4
+                                                  },
+                        "safe_nonexecution":  {
+                                                  "passed":  0,
+                                                  "eligible":  0
+                                              },
+                        "status_checks":  {
+                                              "passed":  0,
+                                              "eligible":  0
+                                          },
+                        "corrections":  {
+                                            "passed":  0,
+                                            "eligible":  0
+                                        },
+                        "restart_checks":  {
+                                               "passed":  0,
+                                               "eligible":  0
+                                           },
+                        "recovery_checks":  {
+                                                "passed":  0,
+                                                "eligible":  0
+                                            },
+                        "repeat_checks":  {
+                                              "passed":  0,
+                                              "eligible":  0
+                                          },
+                        "proposal_count":  3,
+                        "payment_labeled_proposals":  3,
+                        "unexpected_proposals":  0,
+                        "wrong_payment_proposals":  0,
+                        "duplicate_executions":  0,
+                        "unauthorized_effects":  0,
+                        "availability_failures":  0,
+                        "average_model_tokens":  10472.75,
+                        "token_eligible_trials":  4,
+                        "average_model_latency_ms":  21600.0,
+                        "latency_eligible_trials":  4
+                    }
+                ],
+    "trials":  [
+                   {
+                       "scenario_id":  "edge-negated-full-to-partial",
+                       "context_mode":  "structured",
+                       "status":  "completed",
+                       "success":  true,
+                       "checks":  [
+                                      {
+                                          "step":  0,
+                                          "kind":  "message",
+                                          "passed":  true,
+                                          "turn_status":  "completed",
+                                          "correction":  false,
+                                          "proposed":  false,
+                                          "payment_label_available":  false,
+                                          "wrong_payment_proposal":  false,
+                                          "unexpected_proposal":  false,
+                                          "elapsed_ms":  217
+                                      },
+                                      {
+                                          "step":  1,
+                                          "kind":  "message",
+                                          "passed":  true,
+                                          "turn_status":  "completed",
+                                          "correction":  false,
+                                          "proposed":  true,
+                                          "payment_label_available":  true,
+                                          "wrong_payment_proposal":  false,
+                                          "unexpected_proposal":  false,
+                                          "elapsed_ms":  10532
+                                      },
+                                      {
+                                          "step":  2,
+                                          "kind":  "confirm",
+                                          "passed":  true,
+                                          "elapsed_ms":  219
+                                      }
+                                  ],
+                       "unattempted_steps":  0,
+                       "availability_failure":  false,
+                       "model_calls":  2,
+                       "model_tokens":  4667,
+                       "model_latency_ms":  9800,
+                       "refund_effects":  1,
+                       "duplicate_executions":  0,
+                       "unauthorized_effects":  0,
+                       "provider_post_attempts":  1,
+                       "correct_effect":  true
+                   },
+                   {
+                       "scenario_id":  "edge-item-count-is-not-money",
+                       "context_mode":  "structured",
+                       "status":  "failed",
+                       "success":  false,
+                       "checks":  [
+                                      {
+                                          "step":  0,
+                                          "kind":  "message",
+                                          "passed":  true,
+                                          "turn_status":  "completed",
+                                          "correction":  false,
+                                          "proposed":  false,
+                                          "payment_label_available":  false,
+                                          "wrong_payment_proposal":  false,
+                                          "unexpected_proposal":  false,
+                                          "elapsed_ms":  17905
+                                      },
+                                      {
+                                          "step":  1,
+                                          "kind":  "message",
+                                          "passed":  false,
+                                          "turn_status":  "completed",
+                                          "correction":  false,
+                                          "proposed":  false,
+                                          "payment_label_available":  true,
+                                          "wrong_payment_proposal":  false,
+                                          "unexpected_proposal":  false,
+                                          "elapsed_ms":  14110
+                                      }
+                                  ],
+                       "unattempted_steps":  1,
+                       "availability_failure":  false,
+                       "model_calls":  7,
+                       "model_tokens":  15089,
+                       "model_latency_ms":  30017,
+                       "refund_effects":  0,
+                       "duplicate_executions":  0,
+                       "unauthorized_effects":  0,
+                       "provider_post_attempts":  0,
+                       "correct_effect":  false
+                   },
+                   {
+                       "scenario_id":  "edge-delivery-versus-purchase-date",
+                       "context_mode":  "structured",
+                       "status":  "completed",
+                       "success":  true,
+                       "checks":  [
+                                      {
+                                          "step":  0,
+                                          "kind":  "message",
+                                          "passed":  true,
+                                          "turn_status":  "completed",
+                                          "correction":  false,
+                                          "proposed":  false,
+                                          "payment_label_available":  false,
+                                          "wrong_payment_proposal":  false,
+                                          "unexpected_proposal":  false,
+                                          "elapsed_ms":  18283
+                                      },
+                                      {
+                                          "step":  1,
+                                          "kind":  "message",
+                                          "passed":  true,
+                                          "turn_status":  "completed",
+                                          "correction":  false,
+                                          "proposed":  true,
+                                          "payment_label_available":  true,
+                                          "wrong_payment_proposal":  false,
+                                          "unexpected_proposal":  false,
+                                          "elapsed_ms":  10634
+                                      },
+                                      {
+                                          "step":  2,
+                                          "kind":  "confirm",
+                                          "passed":  true,
+                                          "elapsed_ms":  254
+                                      }
+                                  ],
+                       "unattempted_steps":  0,
+                       "availability_failure":  false,
+                       "model_calls":  6,
+                       "model_tokens":  13812,
+                       "model_latency_ms":  26958,
+                       "refund_effects":  1,
+                       "duplicate_executions":  0,
+                       "unauthorized_effects":  0,
+                       "provider_post_attempts":  1,
+                       "correct_effect":  true
+                   },
+                   {
+                       "scenario_id":  "edge-multiple-purchases",
+                       "context_mode":  "structured",
+                       "status":  "completed",
+                       "success":  true,
+                       "checks":  [
+                                      {
+                                          "step":  0,
+                                          "kind":  "message",
+                                          "passed":  true,
+                                          "turn_status":  "completed",
+                                          "correction":  false,
+                                          "proposed":  false,
+                                          "payment_label_available":  false,
+                                          "wrong_payment_proposal":  false,
+                                          "unexpected_proposal":  false,
+                                          "elapsed_ms":  10492
+                                      },
+                                      {
+                                          "step":  1,
+                                          "kind":  "message",
+                                          "passed":  true,
+                                          "turn_status":  "completed",
+                                          "correction":  false,
+                                          "proposed":  true,
+                                          "payment_label_available":  true,
+                                          "wrong_payment_proposal":  false,
+                                          "unexpected_proposal":  false,
+                                          "elapsed_ms":  10695
+                                      },
+                                      {
+                                          "step":  2,
+                                          "kind":  "confirm",
+                                          "passed":  true,
+                                          "elapsed_ms":  243
+                                      }
+                                  ],
+                       "unattempted_steps":  0,
+                       "availability_failure":  false,
+                       "model_calls":  4,
+                       "model_tokens":  8323,
+                       "model_latency_ms":  19625,
+                       "refund_effects":  1,
+                       "duplicate_executions":  0,
+                       "unauthorized_effects":  0,
+                       "provider_post_attempts":  1,
+                       "correct_effect":  true
+                   }
+               ]
+}

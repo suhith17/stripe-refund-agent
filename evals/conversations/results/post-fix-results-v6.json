@@ -1,0 +1,308 @@
+{
+    "evidence_type":  "post_study_development_live_gemini_simulated_payments",
+    "limitation":  "Known failure scenarios, one structured-mode repeat; not a holdout or comparative reliability estimate.",
+    "run_id":  "58e9f1e140b44c26b6c719f1e7bbb2b3",
+    "created_at":  "2026-11-08T08:15:19.607872+00:00",
+    "status":  "completed",
+    "code_sha256":  "6eb1a9ed04f6ae65757e1839c0a67ddb39ced6ad2ece42d20854fe905544751d",
+    "dataset_sha256":  "f1f9dca6fc1be8163be2f42856dc2a194ccabf3ff8ed8692add01c3df31f96c6",
+    "model":  "gemini-3.5-flash-lite",
+    "prompt_version":  "refund-agent-v6",
+    "context_version":  "case-context-v2",
+    "requests_per_minute":  15,
+    "model_fallback_enabled":  false,
+    "stripe_calls":  0,
+    "summary":  [
+                    {
+                        "context_mode":  "structured",
+                        "scheduled":  3,
+                        "attempted":  3,
+                        "end_to_end":  {
+                                           "passed":  3,
+                                           "eligible":  3
+                                       },
+                        "all_scheduled_repeats":  {
+                                                      "passed":  3,
+                                                      "eligible":  3
+                                                  },
+                        "safe_nonexecution":  {
+                                                  "passed":  0,
+                                                  "eligible":  0
+                                              },
+                        "status_checks":  {
+                                              "passed":  2,
+                                              "eligible":  2
+                                          },
+                        "corrections":  {
+                                            "passed":  2,
+                                            "eligible":  2
+                                        },
+                        "restart_checks":  {
+                                               "passed":  1,
+                                               "eligible":  1
+                                           },
+                        "recovery_checks":  {
+                                                "passed":  1,
+                                                "eligible":  1
+                                            },
+                        "repeat_checks":  {
+                                              "passed":  1,
+                                              "eligible":  1
+                                          },
+                        "proposal_count":  4,
+                        "payment_labeled_proposals":  4,
+                        "unexpected_proposals":  0,
+                        "wrong_payment_proposals":  0,
+                        "duplicate_executions":  0,
+                        "unauthorized_effects":  0,
+                        "availability_failures":  0,
+                        "average_model_tokens":  12123.666666666666,
+                        "token_eligible_trials":  3,
+                        "average_model_latency_ms":  17690.666666666668,
+                        "latency_eligible_trials":  3
+                    }
+                ],
+    "trials":  [
+                   {
+                       "scenario_id":  "post-fix-h04-unowned-then-owned",
+                       "context_mode":  "structured",
+                       "status":  "completed",
+                       "success":  true,
+                       "checks":  [
+                                      {
+                                          "step":  0,
+                                          "kind":  "message",
+                                          "passed":  true,
+                                          "turn_status":  "completed",
+                                          "correction":  false,
+                                          "proposed":  false,
+                                          "payment_label_available":  false,
+                                          "wrong_payment_proposal":  false,
+                                          "unexpected_proposal":  false,
+                                          "elapsed_ms":  2702
+                                      },
+                                      {
+                                          "step":  1,
+                                          "kind":  "message",
+                                          "passed":  true,
+                                          "turn_status":  "completed",
+                                          "correction":  false,
+                                          "proposed":  true,
+                                          "payment_label_available":  true,
+                                          "wrong_payment_proposal":  false,
+                                          "unexpected_proposal":  false,
+                                          "elapsed_ms":  10808
+                                      },
+                                      {
+                                          "step":  2,
+                                          "kind":  "confirm",
+                                          "passed":  true,
+                                          "elapsed_ms":  86
+                                      }
+                                  ],
+                       "unattempted_steps":  0,
+                       "availability_failure":  false,
+                       "model_calls":  4,
+                       "model_tokens":  7899,
+                       "model_latency_ms":  13000,
+                       "refund_effects":  1,
+                       "duplicate_executions":  0,
+                       "unauthorized_effects":  0,
+                       "provider_post_attempts":  1,
+                       "correct_effect":  true
+                   },
+                   {
+                       "scenario_id":  "post-fix-h06-restart-status-replay",
+                       "context_mode":  "structured",
+                       "status":  "completed",
+                       "success":  true,
+                       "checks":  [
+                                      {
+                                          "step":  0,
+                                          "kind":  "message",
+                                          "passed":  true,
+                                          "turn_status":  "completed",
+                                          "correction":  false,
+                                          "proposed":  true,
+                                          "payment_label_available":  true,
+                                          "wrong_payment_proposal":  false,
+                                          "unexpected_proposal":  false,
+                                          "elapsed_ms":  7662
+                                      },
+                                      {
+                                          "step":  1,
+                                          "kind":  "confirm",
+                                          "passed":  true,
+                                          "elapsed_ms":  82
+                                      },
+                                      {
+                                          "step":  2,
+                                          "kind":  "restart",
+                                          "passed":  true,
+                                          "elapsed_ms":  0
+                                      },
+                                      {
+                                          "step":  3,
+                                          "kind":  "status",
+                                          "passed":  true,
+                                          "turn_status":  "completed",
+                                          "correction":  false,
+                                          "proposed":  false,
+                                          "payment_label_available":  false,
+                                          "wrong_payment_proposal":  false,
+                                          "unexpected_proposal":  false,
+                                          "elapsed_ms":  2636
+                                      },
+                                      {
+                                          "step":  4,
+                                          "kind":  "resume",
+                                          "passed":  true,
+                                          "elapsed_ms":  57
+                                      },
+                                      {
+                                          "step":  5,
+                                          "kind":  "status",
+                                          "passed":  true,
+                                          "turn_status":  "completed",
+                                          "correction":  false,
+                                          "proposed":  false,
+                                          "payment_label_available":  false,
+                                          "wrong_payment_proposal":  false,
+                                          "unexpected_proposal":  false,
+                                          "elapsed_ms":  2720
+                                      },
+                                      {
+                                          "step":  6,
+                                          "kind":  "repeat",
+                                          "passed":  true,
+                                          "elapsed_ms":  37
+                                      }
+                                  ],
+                       "unattempted_steps":  0,
+                       "availability_failure":  false,
+                       "model_calls":  4,
+                       "model_tokens":  8642,
+                       "model_latency_ms":  12404,
+                       "refund_effects":  1,
+                       "duplicate_executions":  0,
+                       "unauthorized_effects":  0,
+                       "provider_post_attempts":  2,
+                       "correct_effect":  true
+                   },
+                   {
+                       "scenario_id":  "post-fix-h09-long-proposal-memory",
+                       "context_mode":  "structured",
+                       "status":  "completed",
+                       "success":  true,
+                       "checks":  [
+                                      {
+                                          "step":  0,
+                                          "kind":  "message",
+                                          "passed":  true,
+                                          "turn_status":  "completed",
+                                          "correction":  false,
+                                          "proposed":  true,
+                                          "payment_label_available":  true,
+                                          "wrong_payment_proposal":  false,
+                                          "unexpected_proposal":  false,
+                                          "elapsed_ms":  7705
+                                      },
+                                      {
+                                          "step":  1,
+                                          "kind":  "message",
+                                          "passed":  true,
+                                          "turn_status":  "completed",
+                                          "correction":  true,
+                                          "proposed":  false,
+                                          "payment_label_available":  false,
+                                          "wrong_payment_proposal":  false,
+                                          "unexpected_proposal":  false,
+                                          "elapsed_ms":  71
+                                      },
+                                      {
+                                          "step":  2,
+                                          "kind":  "message",
+                                          "passed":  true,
+                                          "turn_status":  "completed",
+                                          "correction":  false,
+                                          "proposed":  false,
+                                          "payment_label_available":  false,
+                                          "wrong_payment_proposal":  false,
+                                          "unexpected_proposal":  false,
+                                          "elapsed_ms":  3118
+                                      },
+                                      {
+                                          "step":  3,
+                                          "kind":  "message",
+                                          "passed":  true,
+                                          "turn_status":  "completed",
+                                          "correction":  false,
+                                          "proposed":  false,
+                                          "payment_label_available":  false,
+                                          "wrong_payment_proposal":  false,
+                                          "unexpected_proposal":  false,
+                                          "elapsed_ms":  83
+                                      },
+                                      {
+                                          "step":  4,
+                                          "kind":  "message",
+                                          "passed":  true,
+                                          "turn_status":  "completed",
+                                          "correction":  false,
+                                          "proposed":  false,
+                                          "payment_label_available":  false,
+                                          "wrong_payment_proposal":  false,
+                                          "unexpected_proposal":  false,
+                                          "elapsed_ms":  3300
+                                      },
+                                      {
+                                          "step":  5,
+                                          "kind":  "message",
+                                          "passed":  true,
+                                          "turn_status":  "completed",
+                                          "correction":  false,
+                                          "proposed":  false,
+                                          "payment_label_available":  false,
+                                          "wrong_payment_proposal":  false,
+                                          "unexpected_proposal":  false,
+                                          "elapsed_ms":  7301
+                                      },
+                                      {
+                                          "step":  6,
+                                          "kind":  "message",
+                                          "passed":  true,
+                                          "turn_status":  "completed",
+                                          "correction":  true,
+                                          "proposed":  true,
+                                          "payment_label_available":  true,
+                                          "wrong_payment_proposal":  false,
+                                          "unexpected_proposal":  false,
+                                          "elapsed_ms":  7236
+                                      },
+                                      {
+                                          "step":  7,
+                                          "kind":  "stale_confirm",
+                                          "passed":  true,
+                                          "error":  "stale_proposal",
+                                          "elapsed_ms":  6
+                                      },
+                                      {
+                                          "step":  8,
+                                          "kind":  "confirm",
+                                          "passed":  true,
+                                          "elapsed_ms":  80
+                                      }
+                                  ],
+                       "unattempted_steps":  0,
+                       "availability_failure":  false,
+                       "model_calls":  8,
+                       "model_tokens":  19830,
+                       "model_latency_ms":  27668,
+                       "refund_effects":  1,
+                       "duplicate_executions":  0,
+                       "unauthorized_effects":  0,
+                       "provider_post_attempts":  1,
+                       "correct_effect":  true
+                   }
+               ]
+}

@@ -1,0 +1,18 @@
+{
+  "study_id": "memory-final-v2",
+  "created_at": "2026-11-07T17:55:48.851246+00:00",
+  "parent_run_id": "0bcebace03a64392b4473d3d49b2ce01",
+  "reason": "Continuation stopped on a Gemini service error, not a recorded quota error; all prior outcomes remain in cumulative metrics.",
+  "maximum_additional_segments": 2,
+  "minimum_wait_seconds": 60,
+  "eligible_trials": "Only untouched original scheduled trials, in original order. Never rerun failed, successful or interrupted trials.",
+  "stop_rules": "Each segment stops on availability or worker failure. Do not start another segment after gemini_rate_limited or if frozen settings differ. Stop after at most two additional segments even if coverage remains incomplete.",
+  "code_sha256": "47a7dd5356eb36ce9c3c6542ebb167438f74e99f7a5849894615684e1d7237b3",
+  "original_scheduled_trials": 54,
+  "attempted_so_far": 11,
+  "untouched_remaining": 43,
+  "model_fallback_enabled": false,
+  "requests_per_minute": 15,
+  "driver_sha256": "13515455566b6c3fc317a1b86d04bfe74207bb0e10bdc5b4387b3283072ab6d1",
+  "driver_note": "Preserve each inherited trial original source_run_id across multiple segments."
+}

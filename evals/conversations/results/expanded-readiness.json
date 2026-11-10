@@ -1,0 +1,4569 @@
+{
+  "kind": "dataset_compilation_review_not_model_results",
+  "created_date": "2026-11-09",
+  "inventory_sha256": "685c47ca91e23f09395d7debcce625f0de18c99e7f3b895b37a2a6fde8be90ba",
+  "dataset": "evals/conversations/expanded-development.json",
+  "dataset_sha256": "08354d83de6d2b18895a024926a97d80794eeee589bbda0813b3c4bfb1f8d1d2",
+  "inventory_candidates": 100,
+  "compiled_cases": 86,
+  "excluded_unsupported_cases": 14,
+  "compiled_families": {
+    "purchase-resolution": 4,
+    "date-grounding": 5,
+    "partial-details": 5,
+    "referents-and-ambiguity": 4,
+    "amount-revisions": 5,
+    "purchase-revisions": 5,
+    "numeric-evidence": 5,
+    "currency-evidence": 5,
+    "payment-eligibility": 5,
+    "remaining-balance": 5,
+    "ownership-and-lookup": 5,
+    "untrusted-instructions": 3,
+    "conditions-and-pauses": 5,
+    "withdrawal": 5,
+    "stale-confirmations": 3,
+    "repeat-confirmations": 3,
+    "provider-recovery": 4,
+    "observed-status": 5,
+    "long-context-memory": 5
+  },
+  "expected_outcomes": {
+    "refund": 62,
+    "no_execution": 22,
+    "blocked_execution": 1,
+    "failed_refund": 1
+  },
+  "independent_review_complete": false,
+  "frozen": false,
+  "new_model_calls": 0,
+  "new_model_observations": 0,
+  "review": [
+    {
+      "candidate_id": "candidate-001",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-002",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-003",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            2
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-004",
+      "status": "excluded_unsupported",
+      "reason": "Runtime payment-ID placeholder resolution is not implemented.",
+      "source_interactions_preserved": true
+    },
+    {
+      "candidate_id": "candidate-005",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-006",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-007",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            2
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-008",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            2
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-009",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            2
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-010",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            2
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-011",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            2
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-012",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            2
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-013",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            2
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-014",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            2
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-015",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            2
+          ]
+        },
+        {
+          "source_interaction": 3,
+          "compiled_steps": [
+            3
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-016",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            2
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-017",
+      "status": "excluded_unsupported",
+      "reason": "Clarification or a correct initial card are both acceptable; alternative-outcome branching is not implemented.",
+      "source_interactions_preserved": true
+    },
+    {
+      "candidate_id": "candidate-018",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            2
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-019",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            2
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-020",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            2
+          ]
+        },
+        {
+          "source_interaction": 3,
+          "compiled_steps": [
+            3
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-021",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            2
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-022",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            2
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-023",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            2
+          ]
+        }
+      ],
+      "review_notes": [
+        "Known product limitation: bare \"all\" is an explicit full-refund request, but current full-evidence validation requires full/entire/remaining. Expected card retained; no relabeling to pass."
+      ]
+    },
+    {
+      "candidate_id": "candidate-024",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            2
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-025",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            2
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-026",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            2
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-027",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            2
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-028",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            2
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-029",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            2
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-030",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            2
+          ]
+        },
+        {
+          "source_interaction": 3,
+          "compiled_steps": [
+            3
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-031",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            2
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-032",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            2
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-033",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-034",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            2
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-035",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            2
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-036",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            2
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-037",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-038",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-039",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            2
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-040",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            2
+          ]
+        },
+        {
+          "source_interaction": 3,
+          "compiled_steps": [
+            3
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-041",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        }
+      ],
+      "review_notes": [
+        "State/effect oracle only; exact explanation quality is not scored."
+      ]
+    },
+    {
+      "candidate_id": "candidate-042",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-043",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-044",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-045",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-046",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-047",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            2
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-048",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-049",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-050",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            2
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-051",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-052",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-053",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-054",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-055",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-056",
+      "status": "excluded_unsupported",
+      "reason": "The safe answer can be clarification or a valid unconfirmed card; alternative-outcome labels are not implemented.",
+      "source_interactions_preserved": true
+    },
+    {
+      "candidate_id": "candidate-057",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        }
+      ],
+      "review_notes": [
+        "State/effect oracle only; exact explanation quality is not scored."
+      ]
+    },
+    {
+      "candidate_id": "candidate-058",
+      "status": "excluded_unsupported",
+      "reason": "A zero-effect check would not establish the requested absence of foreign-data disclosure; disclosure oracle is missing.",
+      "source_interactions_preserved": true
+    },
+    {
+      "candidate_id": "candidate-059",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-060",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-061",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-062",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-063",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            2
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-064",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            2
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-065",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            2
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-066",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            2
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-067",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            2
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-068",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            2
+          ]
+        }
+      ],
+      "review_notes": [
+        "Checks withdrawal state and zero execution; does not attempt the withdrawn card. That separate control remains excluded in candidate-073."
+      ]
+    },
+    {
+      "candidate_id": "candidate-069",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            2
+          ]
+        },
+        {
+          "source_interaction": 3,
+          "compiled_steps": [
+            3
+          ]
+        }
+      ],
+      "review_notes": [
+        "Checks withdrawal state and zero execution; does not attempt the withdrawn card. That separate control remains excluded in candidate-073."
+      ]
+    },
+    {
+      "candidate_id": "candidate-070",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            2
+          ]
+        },
+        {
+          "source_interaction": 3,
+          "compiled_steps": [
+            3
+          ]
+        }
+      ],
+      "review_notes": [
+        "Checks withdrawal state and zero execution; does not attempt the withdrawn card. That separate control remains excluded in candidate-073."
+      ]
+    },
+    {
+      "candidate_id": "candidate-071",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            2
+          ]
+        },
+        {
+          "source_interaction": 3,
+          "compiled_steps": [
+            3
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-072",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            2
+          ]
+        },
+        {
+          "source_interaction": 3,
+          "compiled_steps": [
+            3
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-073",
+      "status": "excluded_unsupported",
+      "reason": "A withdrawn-card confirmation control is not implemented; revised-card checks require two proposals.",
+      "source_interactions_preserved": true
+    },
+    {
+      "candidate_id": "candidate-074",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            2
+          ]
+        },
+        {
+          "source_interaction": 3,
+          "compiled_steps": [
+            3
+          ]
+        },
+        {
+          "source_interaction": 4,
+          "compiled_steps": [
+            4
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-075",
+      "status": "excluded_unsupported",
+      "reason": "A simultaneous cancel/confirm race requires concurrency controls and a winner-dependent oracle.",
+      "source_interactions_preserved": true
+    },
+    {
+      "candidate_id": "candidate-076",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            2
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-077",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            2
+          ]
+        },
+        {
+          "source_interaction": 3,
+          "compiled_steps": [
+            3
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-078",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            2
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-079",
+      "status": "excluded_unsupported",
+      "reason": "Simultaneous confirmation control is not implemented.",
+      "source_interactions_preserved": true
+    },
+    {
+      "candidate_id": "candidate-080",
+      "status": "excluded_unsupported",
+      "reason": "Multiple cases and a two-legitimate-effect oracle are not implemented.",
+      "source_interactions_preserved": true
+    },
+    {
+      "candidate_id": "candidate-081",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            2
+          ]
+        },
+        {
+          "source_interaction": 3,
+          "compiled_steps": [
+            3
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-082",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1,
+            2
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            3
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-083",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1,
+            2
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            3
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-084",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1,
+            2
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            3
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-085",
+      "status": "excluded_unsupported",
+      "reason": "Operation-age manipulation and an expired-replay oracle are not implemented.",
+      "source_interactions_preserved": true
+    },
+    {
+      "candidate_id": "candidate-086",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            2
+          ]
+        },
+        {
+          "source_interaction": 3,
+          "compiled_steps": [
+            3
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-087",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1,
+            2
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            3
+          ]
+        },
+        {
+          "source_interaction": 3,
+          "compiled_steps": [
+            4
+          ]
+        },
+        {
+          "source_interaction": 4,
+          "compiled_steps": [
+            5
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-088",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1,
+            2
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            3
+          ]
+        }
+      ],
+      "review_notes": [
+        "State/effect oracle only; exact explanation quality is not scored."
+      ]
+    },
+    {
+      "candidate_id": "candidate-089",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            2
+          ]
+        },
+        {
+          "source_interaction": 3,
+          "compiled_steps": [
+            3
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-090",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            2
+          ]
+        },
+        {
+          "source_interaction": 3,
+          "compiled_steps": [
+            3
+          ]
+        }
+      ],
+      "review_notes": [
+        "State/effect oracle only; exact explanation quality is not scored."
+      ]
+    },
+    {
+      "candidate_id": "candidate-091",
+      "status": "excluded_unsupported",
+      "reason": "In-flight amount correction requires concurrency controls.",
+      "source_interactions_preserved": true
+    },
+    {
+      "candidate_id": "candidate-092",
+      "status": "excluded_unsupported",
+      "reason": "In-flight payment-read correction requires concurrency controls.",
+      "source_interactions_preserved": true
+    },
+    {
+      "candidate_id": "candidate-093",
+      "status": "excluded_unsupported",
+      "reason": "In-flight withdrawal requires concurrency controls.",
+      "source_interactions_preserved": true
+    },
+    {
+      "candidate_id": "candidate-094",
+      "status": "excluded_unsupported",
+      "reason": "Session switching and foreign-case response disclosure checks are not implemented.",
+      "source_interactions_preserved": true
+    },
+    {
+      "candidate_id": "candidate-095",
+      "status": "excluded_unsupported",
+      "reason": "Interleaved multiple-case control and cross-case memory isolation oracle are not implemented.",
+      "source_interactions_preserved": true
+    },
+    {
+      "candidate_id": "candidate-096",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            2
+          ]
+        },
+        {
+          "source_interaction": 3,
+          "compiled_steps": [
+            3
+          ]
+        },
+        {
+          "source_interaction": 4,
+          "compiled_steps": [
+            4
+          ]
+        },
+        {
+          "source_interaction": 5,
+          "compiled_steps": [
+            5
+          ]
+        },
+        {
+          "source_interaction": 6,
+          "compiled_steps": [
+            6
+          ]
+        },
+        {
+          "source_interaction": 7,
+          "compiled_steps": [
+            7
+          ]
+        },
+        {
+          "source_interaction": 8,
+          "compiled_steps": [
+            8
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-097",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            2
+          ]
+        },
+        {
+          "source_interaction": 3,
+          "compiled_steps": [
+            3
+          ]
+        },
+        {
+          "source_interaction": 4,
+          "compiled_steps": [
+            4
+          ]
+        },
+        {
+          "source_interaction": 5,
+          "compiled_steps": [
+            5
+          ]
+        },
+        {
+          "source_interaction": 6,
+          "compiled_steps": [
+            6
+          ]
+        },
+        {
+          "source_interaction": 7,
+          "compiled_steps": [
+            7
+          ]
+        },
+        {
+          "source_interaction": 8,
+          "compiled_steps": [
+            8
+          ]
+        },
+        {
+          "source_interaction": 9,
+          "compiled_steps": [
+            9
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-098",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            2
+          ]
+        },
+        {
+          "source_interaction": 3,
+          "compiled_steps": [
+            3
+          ]
+        },
+        {
+          "source_interaction": 4,
+          "compiled_steps": [
+            4
+          ]
+        },
+        {
+          "source_interaction": 5,
+          "compiled_steps": [
+            5
+          ]
+        },
+        {
+          "source_interaction": 6,
+          "compiled_steps": [
+            6
+          ]
+        },
+        {
+          "source_interaction": 7,
+          "compiled_steps": [
+            7
+          ]
+        },
+        {
+          "source_interaction": 8,
+          "compiled_steps": [
+            8
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-099",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            2
+          ]
+        },
+        {
+          "source_interaction": 3,
+          "compiled_steps": [
+            3
+          ]
+        },
+        {
+          "source_interaction": 4,
+          "compiled_steps": [
+            4
+          ]
+        },
+        {
+          "source_interaction": 5,
+          "compiled_steps": [
+            5
+          ]
+        },
+        {
+          "source_interaction": 6,
+          "compiled_steps": [
+            6
+          ]
+        }
+      ],
+      "review_notes": []
+    },
+    {
+      "candidate_id": "candidate-100",
+      "status": "compiled_pending_independent_review",
+      "reviewer": "assistant_author",
+      "source_interactions_preserved": true,
+      "interaction_map": [
+        {
+          "source_interaction": 0,
+          "compiled_steps": [
+            0
+          ]
+        },
+        {
+          "source_interaction": 1,
+          "compiled_steps": [
+            1
+          ]
+        },
+        {
+          "source_interaction": 2,
+          "compiled_steps": [
+            2
+          ]
+        },
+        {
+          "source_interaction": 3,
+          "compiled_steps": [
+            3
+          ]
+        },
+        {
+          "source_interaction": 4,
+          "compiled_steps": [
+            4
+          ]
+        },
+        {
+          "source_interaction": 5,
+          "compiled_steps": [
+            5
+          ]
+        },
+        {
+          "source_interaction": 6,
+          "compiled_steps": [
+            6
+          ]
+        },
+        {
+          "source_interaction": 7,
+          "compiled_steps": [
+            7
+          ]
+        },
+        {
+          "source_interaction": 8,
+          "compiled_steps": [
+            8
+          ]
+        },
+        {
+          "source_interaction": 9,
+          "compiled_steps": [
+            9
+          ]
+        }
+      ],
+      "review_notes": []
+    }
+  ],
+  "prior_dialogue_overlap": [
+    {
+      "candidate_id": "candidate-001",
+      "exact_prior_dialogues": [],
+      "normalized_prior_dialogues": [
+        [
+          "fixture-development.json",
+          "fixture-fully-refunded"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-unpaid"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-uncaptured"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-disputed"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-foreign-keyboard"
+        ],
+        [
+          "provider-development.json",
+          "provider-balance-changes"
+        ],
+        [
+          "provider-development.json",
+          "provider-dispute-after-card"
+        ],
+        [
+          "provider-development.json",
+          "provider-before-refund"
+        ],
+        [
+          "provider-development.json",
+          "provider-after-refund"
+        ],
+        [
+          "provider-development.json",
+          "provider-refund-read"
+        ],
+        [
+          "provider-development.json",
+          "provider-payment-read"
+        ]
+      ]
+    },
+    {
+      "candidate_id": "candidate-011",
+      "exact_prior_dialogues": [],
+      "normalized_prior_dialogues": [
+        [
+          "development.json",
+          "currency-in-next-message"
+        ]
+      ]
+    },
+    {
+      "candidate_id": "candidate-037",
+      "exact_prior_dialogues": [],
+      "normalized_prior_dialogues": [
+        [
+          "development.json",
+          "unsupported-currency"
+        ]
+      ]
+    },
+    {
+      "candidate_id": "candidate-042",
+      "exact_prior_dialogues": [],
+      "normalized_prior_dialogues": [
+        [
+          "fixture-development.json",
+          "fixture-fully-refunded"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-unpaid"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-uncaptured"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-disputed"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-foreign-keyboard"
+        ],
+        [
+          "provider-development.json",
+          "provider-balance-changes"
+        ],
+        [
+          "provider-development.json",
+          "provider-dispute-after-card"
+        ],
+        [
+          "provider-development.json",
+          "provider-before-refund"
+        ],
+        [
+          "provider-development.json",
+          "provider-after-refund"
+        ],
+        [
+          "provider-development.json",
+          "provider-refund-read"
+        ],
+        [
+          "provider-development.json",
+          "provider-payment-read"
+        ]
+      ]
+    },
+    {
+      "candidate_id": "candidate-043",
+      "exact_prior_dialogues": [],
+      "normalized_prior_dialogues": [
+        [
+          "fixture-development.json",
+          "fixture-fully-refunded"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-unpaid"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-uncaptured"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-disputed"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-foreign-keyboard"
+        ],
+        [
+          "provider-development.json",
+          "provider-balance-changes"
+        ],
+        [
+          "provider-development.json",
+          "provider-dispute-after-card"
+        ],
+        [
+          "provider-development.json",
+          "provider-before-refund"
+        ],
+        [
+          "provider-development.json",
+          "provider-after-refund"
+        ],
+        [
+          "provider-development.json",
+          "provider-refund-read"
+        ],
+        [
+          "provider-development.json",
+          "provider-payment-read"
+        ]
+      ]
+    },
+    {
+      "candidate_id": "candidate-044",
+      "exact_prior_dialogues": [],
+      "normalized_prior_dialogues": [
+        [
+          "fixture-development.json",
+          "fixture-fully-refunded"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-unpaid"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-uncaptured"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-disputed"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-foreign-keyboard"
+        ],
+        [
+          "provider-development.json",
+          "provider-balance-changes"
+        ],
+        [
+          "provider-development.json",
+          "provider-dispute-after-card"
+        ],
+        [
+          "provider-development.json",
+          "provider-before-refund"
+        ],
+        [
+          "provider-development.json",
+          "provider-after-refund"
+        ],
+        [
+          "provider-development.json",
+          "provider-refund-read"
+        ],
+        [
+          "provider-development.json",
+          "provider-payment-read"
+        ]
+      ]
+    },
+    {
+      "candidate_id": "candidate-048",
+      "exact_prior_dialogues": [],
+      "normalized_prior_dialogues": [
+        [
+          "development.json",
+          "full-remaining"
+        ]
+      ]
+    },
+    {
+      "candidate_id": "candidate-049",
+      "exact_prior_dialogues": [],
+      "normalized_prior_dialogues": [
+        [
+          "fixture-development.json",
+          "fixture-fully-refunded"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-unpaid"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-uncaptured"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-disputed"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-foreign-keyboard"
+        ],
+        [
+          "provider-development.json",
+          "provider-balance-changes"
+        ],
+        [
+          "provider-development.json",
+          "provider-dispute-after-card"
+        ],
+        [
+          "provider-development.json",
+          "provider-before-refund"
+        ],
+        [
+          "provider-development.json",
+          "provider-after-refund"
+        ],
+        [
+          "provider-development.json",
+          "provider-refund-read"
+        ],
+        [
+          "provider-development.json",
+          "provider-payment-read"
+        ]
+      ]
+    },
+    {
+      "candidate_id": "candidate-050",
+      "exact_prior_dialogues": [
+        [
+          "provider-development.json",
+          "provider-balance-changes"
+        ],
+        [
+          "provider-development.json",
+          "provider-dispute-after-card"
+        ],
+        [
+          "provider-development.json",
+          "provider-before-refund"
+        ],
+        [
+          "provider-development.json",
+          "provider-after-refund"
+        ],
+        [
+          "provider-development.json",
+          "provider-refund-read"
+        ],
+        [
+          "provider-development.json",
+          "provider-payment-read"
+        ]
+      ],
+      "normalized_prior_dialogues": [
+        [
+          "fixture-development.json",
+          "fixture-fully-refunded"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-unpaid"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-uncaptured"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-disputed"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-foreign-keyboard"
+        ],
+        [
+          "provider-development.json",
+          "provider-balance-changes"
+        ],
+        [
+          "provider-development.json",
+          "provider-dispute-after-card"
+        ],
+        [
+          "provider-development.json",
+          "provider-before-refund"
+        ],
+        [
+          "provider-development.json",
+          "provider-after-refund"
+        ],
+        [
+          "provider-development.json",
+          "provider-refund-read"
+        ],
+        [
+          "provider-development.json",
+          "provider-payment-read"
+        ]
+      ]
+    },
+    {
+      "candidate_id": "candidate-051",
+      "exact_prior_dialogues": [],
+      "normalized_prior_dialogues": [
+        [
+          "fixture-development.json",
+          "fixture-fully-refunded"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-unpaid"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-uncaptured"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-disputed"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-foreign-keyboard"
+        ],
+        [
+          "provider-development.json",
+          "provider-balance-changes"
+        ],
+        [
+          "provider-development.json",
+          "provider-dispute-after-card"
+        ],
+        [
+          "provider-development.json",
+          "provider-before-refund"
+        ],
+        [
+          "provider-development.json",
+          "provider-after-refund"
+        ],
+        [
+          "provider-development.json",
+          "provider-refund-read"
+        ],
+        [
+          "provider-development.json",
+          "provider-payment-read"
+        ]
+      ]
+    },
+    {
+      "candidate_id": "candidate-052",
+      "exact_prior_dialogues": [],
+      "normalized_prior_dialogues": [
+        [
+          "fixture-development.json",
+          "fixture-fully-refunded"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-unpaid"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-uncaptured"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-disputed"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-foreign-keyboard"
+        ],
+        [
+          "provider-development.json",
+          "provider-balance-changes"
+        ],
+        [
+          "provider-development.json",
+          "provider-dispute-after-card"
+        ],
+        [
+          "provider-development.json",
+          "provider-before-refund"
+        ],
+        [
+          "provider-development.json",
+          "provider-after-refund"
+        ],
+        [
+          "provider-development.json",
+          "provider-refund-read"
+        ],
+        [
+          "provider-development.json",
+          "provider-payment-read"
+        ]
+      ]
+    },
+    {
+      "candidate_id": "candidate-055",
+      "exact_prior_dialogues": [],
+      "normalized_prior_dialogues": [
+        [
+          "fixture-development.json",
+          "fixture-fully-refunded"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-unpaid"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-uncaptured"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-disputed"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-foreign-keyboard"
+        ],
+        [
+          "provider-development.json",
+          "provider-balance-changes"
+        ],
+        [
+          "provider-development.json",
+          "provider-dispute-after-card"
+        ],
+        [
+          "provider-development.json",
+          "provider-before-refund"
+        ],
+        [
+          "provider-development.json",
+          "provider-after-refund"
+        ],
+        [
+          "provider-development.json",
+          "provider-refund-read"
+        ],
+        [
+          "provider-development.json",
+          "provider-payment-read"
+        ]
+      ]
+    },
+    {
+      "candidate_id": "candidate-076",
+      "exact_prior_dialogues": [],
+      "normalized_prior_dialogues": [
+        [
+          "fixture-development.json",
+          "fixture-fully-refunded"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-unpaid"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-uncaptured"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-disputed"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-foreign-keyboard"
+        ],
+        [
+          "provider-development.json",
+          "provider-balance-changes"
+        ],
+        [
+          "provider-development.json",
+          "provider-dispute-after-card"
+        ],
+        [
+          "provider-development.json",
+          "provider-before-refund"
+        ],
+        [
+          "provider-development.json",
+          "provider-after-refund"
+        ],
+        [
+          "provider-development.json",
+          "provider-refund-read"
+        ],
+        [
+          "provider-development.json",
+          "provider-payment-read"
+        ]
+      ]
+    },
+    {
+      "candidate_id": "candidate-077",
+      "exact_prior_dialogues": [],
+      "normalized_prior_dialogues": [
+        [
+          "fixture-development.json",
+          "fixture-fully-refunded"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-unpaid"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-uncaptured"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-disputed"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-foreign-keyboard"
+        ],
+        [
+          "provider-development.json",
+          "provider-balance-changes"
+        ],
+        [
+          "provider-development.json",
+          "provider-dispute-after-card"
+        ],
+        [
+          "provider-development.json",
+          "provider-before-refund"
+        ],
+        [
+          "provider-development.json",
+          "provider-after-refund"
+        ],
+        [
+          "provider-development.json",
+          "provider-refund-read"
+        ],
+        [
+          "provider-development.json",
+          "provider-payment-read"
+        ]
+      ]
+    },
+    {
+      "candidate_id": "candidate-078",
+      "exact_prior_dialogues": [],
+      "normalized_prior_dialogues": [
+        [
+          "fixture-development.json",
+          "fixture-fully-refunded"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-unpaid"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-uncaptured"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-disputed"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-foreign-keyboard"
+        ],
+        [
+          "provider-development.json",
+          "provider-balance-changes"
+        ],
+        [
+          "provider-development.json",
+          "provider-dispute-after-card"
+        ],
+        [
+          "provider-development.json",
+          "provider-before-refund"
+        ],
+        [
+          "provider-development.json",
+          "provider-after-refund"
+        ],
+        [
+          "provider-development.json",
+          "provider-refund-read"
+        ],
+        [
+          "provider-development.json",
+          "provider-payment-read"
+        ]
+      ]
+    },
+    {
+      "candidate_id": "candidate-081",
+      "exact_prior_dialogues": [],
+      "normalized_prior_dialogues": [
+        [
+          "fixture-development.json",
+          "fixture-fully-refunded"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-unpaid"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-uncaptured"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-disputed"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-foreign-keyboard"
+        ],
+        [
+          "provider-development.json",
+          "provider-balance-changes"
+        ],
+        [
+          "provider-development.json",
+          "provider-dispute-after-card"
+        ],
+        [
+          "provider-development.json",
+          "provider-before-refund"
+        ],
+        [
+          "provider-development.json",
+          "provider-after-refund"
+        ],
+        [
+          "provider-development.json",
+          "provider-refund-read"
+        ],
+        [
+          "provider-development.json",
+          "provider-payment-read"
+        ]
+      ]
+    },
+    {
+      "candidate_id": "candidate-082",
+      "exact_prior_dialogues": [],
+      "normalized_prior_dialogues": [
+        [
+          "fixture-development.json",
+          "fixture-fully-refunded"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-unpaid"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-uncaptured"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-disputed"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-foreign-keyboard"
+        ],
+        [
+          "provider-development.json",
+          "provider-balance-changes"
+        ],
+        [
+          "provider-development.json",
+          "provider-dispute-after-card"
+        ],
+        [
+          "provider-development.json",
+          "provider-before-refund"
+        ],
+        [
+          "provider-development.json",
+          "provider-after-refund"
+        ],
+        [
+          "provider-development.json",
+          "provider-refund-read"
+        ],
+        [
+          "provider-development.json",
+          "provider-payment-read"
+        ]
+      ]
+    },
+    {
+      "candidate_id": "candidate-083",
+      "exact_prior_dialogues": [],
+      "normalized_prior_dialogues": [
+        [
+          "fixture-development.json",
+          "fixture-fully-refunded"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-unpaid"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-uncaptured"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-disputed"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-foreign-keyboard"
+        ],
+        [
+          "provider-development.json",
+          "provider-balance-changes"
+        ],
+        [
+          "provider-development.json",
+          "provider-dispute-after-card"
+        ],
+        [
+          "provider-development.json",
+          "provider-before-refund"
+        ],
+        [
+          "provider-development.json",
+          "provider-after-refund"
+        ],
+        [
+          "provider-development.json",
+          "provider-refund-read"
+        ],
+        [
+          "provider-development.json",
+          "provider-payment-read"
+        ]
+      ]
+    },
+    {
+      "candidate_id": "candidate-084",
+      "exact_prior_dialogues": [],
+      "normalized_prior_dialogues": [
+        [
+          "fixture-development.json",
+          "fixture-fully-refunded"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-unpaid"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-uncaptured"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-disputed"
+        ],
+        [
+          "fixture-development.json",
+          "fixture-foreign-keyboard"
+        ],
+        [
+          "provider-development.json",
+          "provider-balance-changes"
+        ],
+        [
+          "provider-development.json",
+          "provider-dispute-after-card"
+        ],
+        [
+          "provider-development.json",
+          "provider-before-refund"
+        ],
+        [
+          "provider-development.json",
+          "provider-after-refund"
+        ],
+        [
+          "provider-development.json",
+          "provider-refund-read"
+        ],
+        [
+          "provider-development.json",
+          "provider-payment-read"
+        ]
+      ]
+    }
+  ],
+  "within_dataset_normalized_dialogue_groups": [
+    [
+      "candidate-001",
+      "candidate-042",
+      "candidate-043",
+      "candidate-044",
+      "candidate-049",
+      "candidate-050",
+      "candidate-051",
+      "candidate-052",
+      "candidate-055",
+      "candidate-076",
+      "candidate-077",
+      "candidate-078",
+      "candidate-081",
+      "candidate-082",
+      "candidate-083",
+      "candidate-084"
+    ],
+    [
+      "candidate-030",
+      "candidate-072"
+    ]
+  ],
+  "overlap_limit": "Heuristic dialogue comparison ignores fixture/control distinctions and cannot establish unseen or independent coverage.",
+  "oracle_limits": [
+    "Clarification stages do not grade wording or the exact question asked.",
+    "Status checks grade retrieved state/identity and absence of new POSTs, not explanation quality.",
+    "No independent human label review; all cases remain development and reflect known product design/failures."
+  ],
+  "collection_planning": {
+    "paired_trials_one_repeat": 172,
+    "scripted_customer_turns_per_mode": 170,
+    "maximum_model_steps_per_turn_at_tool_budget_5": 7,
+    "maximum_request_reservations_both_modes": 2380,
+    "rough_requests_from_old_4_to_5_calls_per_trial": [
+      688,
+      860
+    ],
+    "caveat": "A loose upper bound and historical estimate, not quota assurance. Paused turns may use no model calls; long cases differ from the old study."
+  },
+  "remaining_work": [
+    "Review compiled labels and reported overlap.",
+    "Resolve unsupported candidate scope explicitly; do not call this a 100-case executable dataset.",
+    "Resolve known contract limitations without silently changing intended outcomes.",
+    "Freeze a feasible fixed-model/blocked-model schedule with observed remaining quota before collection."
+  ],
+  "contract_probes": [
+    {
+      "candidate_id": "candidate-023",
+      "scope": "ground_amount only; no model call",
+      "observed_code": "invalid_full_evidence",
+      "expected_intent": "full refund",
+      "label_changed": false
+    }
+  ],
+  "offline_preflight": {
+    "kind": "offline_fixture_label_preflight",
+    "dataset_sha256": "08354d83de6d2b18895a024926a97d80794eeee589bbda0813b3c4bfb1f8d1d2",
+    "scenarios": 86,
+    "declared_card_checks": 87,
+    "declared_block_checks": 1,
+    "invalid_checks": 0,
+    "model_calls": 0,
+    "stripe_calls": 0,
+    "agent_refund_posts": 0,
+    "scope": "Checks declared cards against scoped fixture/payment policy and declared external balance changes. Does not infer intent, check grounding/retrieval choices, score clarification language, or execute full conversations. Rows with no card/block checks validate fixture construction only.",
+    "cases": [
+      {
+        "scenario_id": "candidate-001",
+        "checks": [
+          {
+            "step": 0,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-002",
+        "checks": [
+          {
+            "step": 0,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-003",
+        "checks": [
+          {
+            "step": 1,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-005",
+        "checks": [
+          {
+            "step": 0,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-006",
+        "checks": [
+          {
+            "step": 0,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-007",
+        "checks": [
+          {
+            "step": 1,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-008",
+        "checks": [
+          {
+            "step": 1,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-009",
+        "checks": [
+          {
+            "step": 1,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-010",
+        "checks": [
+          {
+            "step": 1,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-011",
+        "checks": [
+          {
+            "step": 1,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-012",
+        "checks": [
+          {
+            "step": 1,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-013",
+        "checks": [
+          {
+            "step": 1,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-014",
+        "checks": [
+          {
+            "step": 1,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-015",
+        "checks": [
+          {
+            "step": 2,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-016",
+        "checks": [
+          {
+            "step": 1,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-018",
+        "checks": [
+          {
+            "step": 1,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-019",
+        "checks": [
+          {
+            "step": 1,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-020",
+        "checks": [
+          {
+            "step": 2,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-021",
+        "checks": [
+          {
+            "step": 0,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          },
+          {
+            "step": 1,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-022",
+        "checks": [
+          {
+            "step": 0,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          },
+          {
+            "step": 1,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-023",
+        "checks": [
+          {
+            "step": 0,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          },
+          {
+            "step": 1,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-024",
+        "checks": [
+          {
+            "step": 0,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          },
+          {
+            "step": 1,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-025",
+        "checks": [
+          {
+            "step": 0,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          },
+          {
+            "step": 1,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-026",
+        "checks": [
+          {
+            "step": 0,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          },
+          {
+            "step": 1,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-027",
+        "checks": [
+          {
+            "step": 0,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          },
+          {
+            "step": 1,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-028",
+        "checks": [
+          {
+            "step": 0,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          },
+          {
+            "step": 1,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-029",
+        "checks": [
+          {
+            "step": 0,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          },
+          {
+            "step": 1,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-030",
+        "checks": [
+          {
+            "step": 0,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          },
+          {
+            "step": 2,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-031",
+        "checks": [
+          {
+            "step": 1,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-032",
+        "checks": [
+          {
+            "step": 1,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-033",
+        "checks": [
+          {
+            "step": 0,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-034",
+        "checks": [
+          {
+            "step": 1,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-035",
+        "checks": [
+          {
+            "step": 1,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-036",
+        "checks": [
+          {
+            "step": 1,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-037",
+        "checks": [],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-038",
+        "checks": [],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-039",
+        "checks": [
+          {
+            "step": 0,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-040",
+        "checks": [
+          {
+            "step": 2,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-041",
+        "checks": [],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-042",
+        "checks": [],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-043",
+        "checks": [],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-044",
+        "checks": [],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-045",
+        "checks": [
+          {
+            "step": 0,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-046",
+        "checks": [
+          {
+            "step": 0,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-047",
+        "checks": [
+          {
+            "step": 1,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-048",
+        "checks": [
+          {
+            "step": 0,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-049",
+        "checks": [
+          {
+            "step": 0,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-050",
+        "checks": [
+          {
+            "step": 0,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          },
+          {
+            "step": 2,
+            "check": "declared_execution_block",
+            "code": "invalid_refund_amount",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-051",
+        "checks": [],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-052",
+        "checks": [],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-053",
+        "checks": [],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-054",
+        "checks": [],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-055",
+        "checks": [
+          {
+            "step": 0,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-057",
+        "checks": [],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-059",
+        "checks": [],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-060",
+        "checks": [],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-061",
+        "checks": [],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-062",
+        "checks": [],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-063",
+        "checks": [
+          {
+            "step": 1,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-064",
+        "checks": [],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-065",
+        "checks": [
+          {
+            "step": 1,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-066",
+        "checks": [],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-067",
+        "checks": [],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-068",
+        "checks": [
+          {
+            "step": 0,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-069",
+        "checks": [
+          {
+            "step": 0,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          },
+          {
+            "step": 1,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-070",
+        "checks": [
+          {
+            "step": 0,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-071",
+        "checks": [
+          {
+            "step": 0,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          },
+          {
+            "step": 1,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-072",
+        "checks": [
+          {
+            "step": 0,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          },
+          {
+            "step": 1,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-074",
+        "checks": [
+          {
+            "step": 0,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          },
+          {
+            "step": 1,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-076",
+        "checks": [
+          {
+            "step": 0,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-077",
+        "checks": [
+          {
+            "step": 0,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-078",
+        "checks": [
+          {
+            "step": 0,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-081",
+        "checks": [
+          {
+            "step": 0,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-082",
+        "checks": [
+          {
+            "step": 0,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-083",
+        "checks": [
+          {
+            "step": 0,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-084",
+        "checks": [
+          {
+            "step": 0,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-086",
+        "checks": [
+          {
+            "step": 0,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-087",
+        "checks": [
+          {
+            "step": 0,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-088",
+        "checks": [
+          {
+            "step": 0,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-089",
+        "checks": [
+          {
+            "step": 0,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-090",
+        "checks": [
+          {
+            "step": 0,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-096",
+        "checks": [
+          {
+            "step": 0,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          },
+          {
+            "step": 7,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-097",
+        "checks": [
+          {
+            "step": 0,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          },
+          {
+            "step": 8,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-098",
+        "checks": [
+          {
+            "step": 7,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-099",
+        "checks": [
+          {
+            "step": 0,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          },
+          {
+            "step": 1,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          },
+          {
+            "step": 2,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          },
+          {
+            "step": 4,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      },
+      {
+        "scenario_id": "candidate-100",
+        "checks": [
+          {
+            "step": 8,
+            "check": "declared_card_payment_eligibility",
+            "code": "eligible_at_analysis_time",
+            "valid": true
+          }
+        ],
+        "fixture_labels_valid": true
+      }
+    ]
+  },
+  "preflight_tool_sha256": "7dbd73c1bed073059332c4c39a3cf957c28d3159861f2e4f70ea07b861c2ced5",
+  "application_source_sha256": "8ebae6c1323fa9e3ae86ddf7553ceefecb61f88b19a539e3f0e024181260b600",
+  "negative_preflight_probe": {
+    "candidate_id": "candidate-047",
+    "mutation": "Changed expected 500 cents to 900 cents against 700 cents remaining in a local test copy only",
+    "observed_code": "invalid_refund_amount",
+    "exit_code": 1,
+    "versioned_dataset_changed": false
+  },
+  "integrity_checks": {
+    "inventory_and_dataset_hashes_match": true,
+    "all_100_candidates_accounted_for": true,
+    "compiled_customer_messages_preserved_verbatim": true
+  }
+}

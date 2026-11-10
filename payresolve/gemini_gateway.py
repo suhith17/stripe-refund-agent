@@ -2,6 +2,8 @@
 
 import re
 import time
+from datetime import datetime, timezone
+from email.utils import parsedate_to_datetime
 
 from google import genai
 from pydantic import ValidationError
@@ -18,6 +20,12 @@ class ExtractionError(Exception):
         self.latency_ms = latency_ms
 
 
+class _StopHttpRetry(Exception):
+    """Transport boundary signal containing no upstream body or credentials."""
+    def __init__(self, status_code=None):
+        self.status_code = status_code
+
+
 def validate_message(message, secrets=()):
     if not isinstance(message, str) or not 1 <= len(message.strip()) <= 4000 or "\x00" in message:
         raise ExtractionError("invalid_message", "Provide 1 to 4000 characters without null bytes.")
@@ -29,10 +37,19 @@ def validate_message(message, secrets=()):
 
 
 class GeminiExtractor:
-    def __init__(self, api_key, model, *, forbidden_values=()):
+    request_timeout_ms = 30000
+    request_retries = 2
+    response_schema = Intent
+    system_instruction = SYSTEM_INSTRUCTION
+    prompt_version = PROMPT_VERSION
+    result_key = "intent"
+
+    def __init__(self, api_key, model, *, forbidden_values=(), pacer=None):
         self._api_key = api_key
         self.model = model
         self._secrets = (api_key, *forbidden_values)
+        self.pacer = pacer
+        self.request_deadline = None
         if not re.fullmatch(r"gemini-[A-Za-z0-9.-]+", model):
             raise ExtractionError("invalid_gemini_model", "Set GEMINI_MODEL to a Gemini model identifier.")
 
@@ -41,6 +58,9 @@ class GeminiExtractor:
 
     def extract(self, message):
         message = self.validate(message)
+        return self._extract_validated(message)
+
+    def _extract_validated(self, message):
         if not self._api_key:
             raise ExtractionError("gemini_not_configured", "Set GEMINI_API_KEY in your local .env file.")
         started = time.perf_counter()
@@ -54,7 +74,7 @@ class GeminiExtractor:
             raise ExtractionError("gemini_incomplete", "Gemini did not return a completed extraction.",
                                   attempts=attempt, latency_ms=elapsed)
         try:
-            intent = Intent.model_validate_json(response.output_text)
+            intent = self.response_schema.model_validate_json(response.output_text)
         except (ValidationError, ValueError, TypeError, AttributeError):
             raise ExtractionError("invalid_model_output", "Gemini returned an invalid extraction; no action was proposed.",
                                   attempts=attempt, latency_ms=elapsed) from None
@@ -64,18 +84,46 @@ class GeminiExtractor:
                                   attempts=attempt, latency_ms=elapsed)
         usage = getattr(response, "usage", None)
         return {
-            "intent": intent.model_dump(), "model": self.model, "prompt_version": PROMPT_VERSION,
+            self.result_key: intent.model_dump(), "model": self.model, "prompt_version": self.prompt_version,
             "attempts": attempt, "latency_ms": elapsed,
+            "pacing_wait_ms": getattr(self, 'pacing_wait_ms', 0),
             "usage": {name: getattr(usage, name, None) for name in
                       ("total_input_tokens", "total_output_tokens", "total_thought_tokens", "total_tokens")},
         }
 
     def _request(self, message):
         attempts = 0
+        self.pacing_wait_ms = 0
 
         def record_request(request):
             nonlocal attempts
+            if attempts >= self.request_retries + 1:
+                raise _StopHttpRetry()
+            if self.pacer is not None:
+                deadline = self.request_deadline or (time.monotonic() + self.request_timeout_ms / 1000)
+                self.pacing_wait_ms += self.pacer.wait(self.model, deadline)
+                remaining = max(.001, deadline - time.monotonic())
+                request.extensions['timeout'] = {key: min(self.request_timeout_ms / 1000, remaining)
+                                                 for key in ('connect', 'read', 'write', 'pool')}
             attempts += 1
+
+        def stop_error_retry(response):
+            if self.pacer is not None and response.status_code == 429:
+                retry_after = response.headers.get('retry-after', '')
+                try:
+                    delay = float(retry_after)
+                except ValueError:
+                    try:
+                        delay = (parsedate_to_datetime(retry_after) - datetime.now(timezone.utc)).total_seconds()
+                    except (ValueError, TypeError, OverflowError):
+                        delay = 60
+                self.pacer.cooldown(self.model, delay)
+            # The installed SDK normalizes attempts=0 to 1 before its Interactions
+            # adapter interprets that value as one retry. Fail at the public HTTP
+            # hook boundary instead; leave legacy extraction retries unchanged.
+            if self.request_retries == 0 and response.status_code >= 400:
+                response.close()
+                raise _StopHttpRetry(response.status_code)
 
         def failure(code, text):
             return ExtractionError(code, text, attempts=attempts)
@@ -83,18 +131,19 @@ class GeminiExtractor:
         try:
             with genai.Client(api_key=self._api_key, vertexai=False, enterprise=False,
                               http_options={
-                                  "timeout": 30000,
-                                  "client_args": {"event_hooks": {"request": [record_request]}},
+                                  "timeout": self.request_timeout_ms,
+                                  "client_args": {"event_hooks": {"request": [record_request],
+                                                                  "response": [stop_error_retry]}},
                                   # In pinned google-genai 2.34.0, Interactions maps
                                   # attempts to RETRIES, unlike generateContent.
                                   # Two means three HTTP attempts; transport-tested.
-                                  "retry_options": {"attempts": 2, "initial_delay": 2,
+                                  "retry_options": {"attempts": self.request_retries, "initial_delay": 2,
                                                     "max_delay": 4.5, "exp_base": 2, "jitter": 0.5,
                                                     "http_status_codes": [500, 502, 503, 504]},
                               }) as client:
                 response = client.interactions.create(
-                    model=self.model, input=message, system_instruction=SYSTEM_INSTRUCTION,
-                    response_format={"type": "text", "mime_type": "application/json", "schema": Intent.model_json_schema()},
+                    model=self.model, input=message, system_instruction=self.system_instruction,
+                    response_format={"type": "text", "mime_type": "application/json", "schema": self.response_schema.model_json_schema()},
                     generation_config={"thinking_level": "low", "max_output_tokens": 2048},
                     store=False, automatic_continuation=False,
                 )
@@ -102,9 +151,11 @@ class GeminiExtractor:
         except Exception as error:
             # The Interactions SDK has its own exception hierarchy. Contain all
             # SDK errors here so a URL, response body, or credential cannot leak.
+            if isinstance(error, ExtractionError):
+                raise
             status = getattr(error, "status_code", getattr(error, "code", None))
             if status == 429:
-                raise failure("gemini_rate_limited", "Gemini quota reached. Wait before retrying; no fallback model was used.") from None
+                raise failure("gemini_rate_limited", "Gemini quota reached. Wait before retrying.") from None
             if status in (401, 403):
                 raise failure("gemini_access_denied", "Gemini rejected the key or model access.") from None
             if status in (400, 404):

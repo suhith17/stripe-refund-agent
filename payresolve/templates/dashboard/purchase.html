@@ -1,0 +1,7 @@
+{% extends 'dashboard/base.html' %}
+{% block title %}{{ order.order_id }} · PayResolve{% endblock %}
+{% block content %}
+<a class="back-link" href="{{ url_for('dashboard.demo_purchases') }}">← Your purchases</a>
+<section class="heading"><p class="eyebrow">{{ order.order_id }}</p><h1>{{ order.description }}</h1></section>
+<section class="panel"><dl><dt>Purchased</dt><dd>{{ order.purchased_on }} (demo date)</dd><dt>Original amount</dt><dd>{{ order.amount_minor|money }} USD</dd><dt>Payment</dt><dd><code>{{ order.payment_id }}</code></dd></dl><p class="muted">This is the original purchase amount. Refund eligibility and remaining funds require a fresh payment check.</p></section>
+{% endblock %}

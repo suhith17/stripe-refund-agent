@@ -1,0 +1,32 @@
+{% extends 'dashboard/base.html' %}
+{% block title %}Refund workspace · PayResolve{% endblock %}
+{% block content %}
+<a class="back-link" href="{{ url_for('dashboard.demo_purchases') }}">Open customer demo purchases →</a>
+<section class="heading"><p class="eyebrow">REQUEST → REVIEW → RESOLVE</p><h1>Refund workspace</h1><p>Describe the request. Review the proposal. Stay in control of the refund.</p></section>
+<div class="workspace-grid">
+  <section class="panel composer">
+    <div class="panel-heading"><h2>New request</h2><span class="pill">01 · Analyze</span></div>
+    <p class="muted">Include a PaymentIntent ID and an amount with currency, or ask for the full remaining refund.</p>
+    <form method="post" action="{{ url_for('dashboard.submit') }}" data-wait="Analyzing with Gemini and checking the payment. This can take a minute.">
+      <input type="hidden" name="csrf" value="{{ csrf }}">
+      <label for="message">Customer request</label>
+      <textarea id="message" name="message" maxlength="4000" rows="5" placeholder="Refund USD 5 from pi_… for the duplicate charge." required></textarea>
+      <div class="form-footer"><span class="muted small">Analysis does not issue a refund.</span><button class="primary" type="submit">Analyze request <span aria-hidden="true">↗</span></button></div>
+      <p class="working" role="status" hidden></p>
+    </form>
+    {% if not gemini_ready or not stripe_ready %}<p class="notice">{% if not gemini_ready %}Gemini key is missing. {% endif %}{% if not stripe_ready %}Stripe sandbox key is missing. {% endif %}Save the keys in your local .env before analyzing a refund.</p>{% endif %}
+  </section>
+  <aside class="panel"><div class="panel-heading"><h2>Your workflow</h2><span class="pill quiet">Human reviewed</span></div>
+    <ol class="steps"><li><strong>Analyze</strong><span>Extract the request and check eligibility.</span></li><li><strong>Review & approve</strong><span>Confirm the exact payment and amount.</span></li><li><strong>Execute & verify</strong><span>Submit the approved refund, then check its state.</span></li></ol>
+    <div class="model-line"><span class="dot"></span><span>{{ model_name }}</span></div>
+  </aside>
+</div>
+<section class="panel section-space"><div class="panel-heading"><div><h2>Recent requests</h2><p class="muted small">Saved locally. Open a request to continue where you left off.</p></div><span class="count">{{ records|length }}</span></div>
+  {% if records %}<div class="request-list">{% for item in records %}<a class="request-row" href="{{ url_for('dashboard.detail', request_id=item.id) }}"><div><strong>{{ item.message|truncate(100) }}</strong><span class="muted small">{{ item.created_at[:16]|replace('T', ' ') }} UTC · {{ item.id[:8] }}</span></div><span class="badge {{ item.stage }}">{{ item.stage|replace('_', ' ') }}</span><span aria-hidden="true">→</span></a>{% endfor %}</div>
+  {% else %}<div class="empty"><h3>Your first request starts here.</h3><p>Analyze a synthetic refund request above. Its decisions and history will appear here.</p></div>{% endif %}
+</section>
+<section class="panel section-space"><div class="panel-heading"><div><h2>Sandbox payments</h2><p class="muted small">Saved snapshots; analysis checks current Stripe state. Select a payment to draft a full-refund request.</p></div></div>
+{% if payments %}<div class="table-wrap"><table><thead><tr><th>Payment</th><th>Captured</th><th>Remaining</th><th></th></tr></thead><tbody>{% for payment in payments %}<tr><td><code>{{ payment.id }}</code></td><td>{{ payment.amount_captured|money }}</td><td>{{ payment.refundable_amount|money }}</td><td><button class="text-button" type="button" data-example="Refund the full remaining amount from {{ payment.id }}" {% if payment.refundable_amount <= 0 %}disabled{% endif %}>Use payment ↑</button></td></tr>{% endfor %}</tbody></table></div>
+{% else %}<p class="muted">No local sandbox payments yet. Create the M1 fixtures using the setup guide in the README, then return here.</p>{% endif %}
+</section>
+{% endblock %}

@@ -1,0 +1,30 @@
+{
+  "study_id": "memory-final-v2",
+  "frozen_at": "2026-11-07T17:40:04.501659+00:00",
+  "code_sha256": "47a7dd5356eb36ce9c3c6542ebb167438f74e99f7a5849894615684e1d7237b3",
+  "dataset": "evals/conversations/held-out-v2.json",
+  "dataset_sha256": "6e7a37dd09c72abf00ccff7d41ee5e9c892c93c330223e6a6894aa660ab4c461",
+  "model": "gemini-3.5-flash-lite",
+  "prompt_version": "refund-agent-v5",
+  "context_version": "case-context-v2",
+  "python": "3.15.1",
+  "tool_budget": 5,
+  "requests_per_minute": 15,
+  "model_fallback_enabled": false,
+  "modes": [
+    "history",
+    "structured"
+  ],
+  "scenarios": 9,
+  "repeats": 3,
+  "scheduled_trials": 54,
+  "seed": 0,
+  "evidence_type": "live_gemini_simulated_payments",
+  "stripe_calls": 0,
+  "fixture_count": 3,
+  "development_gate": "Exposed h01 promoted to development; repaired date/restart/repeat flow passed once per mode in dc046d4c50864eabb9623cbf184e1797. Broader original development gate remains incomplete. 78 focused offline checks passed.",
+  "exclusions": [
+    "h01-date-split-restart: exposed and used for product repair after v1"
+  ],
+  "policy": "Remaining nine scenarios were unattempted in v1; retain author-reviewed-label limitations. Same model, prompt, tools and payment protections in both arms. Stop on provider availability failure. Preserve all failed and unattempted trials; no tuning on this version during the run. Pacing wait is included in model wall time. Do not pool v1 and v2 as one system."
+}

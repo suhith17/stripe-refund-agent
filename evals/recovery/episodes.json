@@ -1,0 +1,19 @@
+{
+  "version": "recovery-episodes-v1",
+  "review_status": "draft",
+  "description": "Twelve authored synthetic workflow recovery episodes: two per planned fault condition. No model calls or real Stripe actions.",
+  "episodes": [
+    {"id":"lost_partial","condition":"lost_response","fault":"after_refund","amount":500,"expected_steps":["stripe_connection_failed","verified"],"expected_posts":2,"expected_effects":1,"expected_external_amount":0,"expected_local_status":"verified"},
+    {"id":"lost_full","condition":"lost_response","fault":"after_refund","amount":1000,"expected_steps":["stripe_connection_failed","verified"],"expected_posts":2,"expected_effects":1,"expected_external_amount":0,"expected_local_status":"verified"},
+    {"id":"known_refund_read","condition":"known_id_read","fault":"refund_read","amount":500,"expected_steps":["stripe_connection_failed","verified"],"expected_posts":1,"expected_effects":1,"expected_external_amount":0,"expected_local_status":"verified"},
+    {"id":"known_payment_read","condition":"known_id_read","fault":"payment_read","amount":500,"expected_steps":["stripe_connection_failed","verified"],"expected_posts":1,"expected_effects":1,"expected_external_amount":0,"expected_local_status":"verified"},
+    {"id":"repeat_restart","condition":"duplicate_execution","fault":"repeat","amount":500,"expected_steps":["verified","verified"],"expected_posts":1,"expected_effects":1,"expected_external_amount":0,"expected_local_status":"verified"},
+    {"id":"concurrent_same_approval","condition":"duplicate_execution","fault":"concurrent","amount":500,"expected_steps":["verified","verified"],"expected_posts":1,"expected_effects":1,"expected_external_amount":0,"expected_local_status":"verified"},
+    {"id":"pending_then_success","condition":"refund_status","fault":"pending","amount":500,"expected_steps":["pending","verified"],"expected_posts":1,"expected_effects":1,"expected_external_amount":0,"expected_local_status":"verified"},
+    {"id":"failed_is_terminal","condition":"refund_status","fault":"failed","amount":500,"expected_steps":["failed","failed"],"expected_posts":1,"expected_effects":0,"expected_external_amount":0,"expected_local_status":"failed"},
+    {"id":"expired_after_effect","condition":"expired_unknown","fault":"after_refund","amount":500,"expected_steps":["stripe_connection_failed","reconciliation_required"],"expected_posts":1,"expected_effects":1,"expected_external_amount":0,"expected_local_status":"unresolved"},
+    {"id":"expired_before_effect","condition":"expired_unknown","fault":"before_refund","amount":500,"expected_steps":["stripe_connection_failed","reconciliation_required"],"expected_posts":1,"expected_effects":0,"expected_external_amount":0,"expected_local_status":"unresolved"},
+    {"id":"changed_balance","condition":"state_change","fault":"external_refund","amount":500,"expected_steps":["invalid_refund_amount"],"expected_posts":0,"expected_effects":0,"expected_external_amount":800,"expected_local_status":"approved"},
+    {"id":"changed_dispute","condition":"state_change","fault":"disputed","amount":500,"expected_steps":["payment_disputed"],"expected_posts":0,"expected_effects":0,"expected_external_amount":0,"expected_local_status":"approved"}
+  ]
+}

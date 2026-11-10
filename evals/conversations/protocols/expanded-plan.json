@@ -1,0 +1,1086 @@
+{
+  "kind": "proposed_expansion_protocol_not_frozen",
+  "status": "design_and_runner_audit_only",
+  "implementation_updates": [
+    {
+      "date": "2026-11-09",
+      "milestone": "E45",
+      "implemented": [
+        "86 executable development scenarios across 19 families",
+        "14 explicit unsupported candidate exclusions",
+        "source interaction mapping and overlap review",
+        "offline fixture/payment-label preflight"
+      ],
+      "development_dataset": "evals/conversations/expanded-development.json",
+      "readiness_audit": "evals/conversations/results/expanded-readiness.json",
+      "offline_verification": "86 fixtures initialized; 87 card labels and one expected balance block accepted; deliberately incorrect amount label rejected",
+      "new_model_calls": 0,
+      "note": "Original 100-case schedule options below remain design history, not the compiled schedule. Dataset is development, not unseen; independent review incomplete. Known bare-all grounding limitation retained."
+    },
+    {
+      "date": "2026-11-09",
+      "milestone": "E44",
+      "implemented": [
+        "external refund/dispute controls",
+        "persistent one-time submission/retrieval faults",
+        "pending/failed/settled result controls",
+        "blocked/pending/failed outcome scoring"
+      ],
+      "development_dataset": "evals/conversations/provider-development.json",
+      "offline_verification": "Nine provider-control development scenarios in both modes with scripted planner; 47 related checks passed",
+      "new_model_calls": 0,
+      "note": "Concurrency, multiple-case, expiration and alternative-outcome controls remain unsupported. The 100 candidate specifications are not compiled/reviewed by this increment."
+    },
+    {
+      "date": "2026-11-09",
+      "milestone": "E43",
+      "implemented": [
+        "persistent HTTP send-boundary reservations",
+        "shared fixed-model budget across continuations",
+        "separate budget-stop reporting"
+      ],
+      "offline_verification": "48 focused budget, runner, transport, continuation and pacing tests passed",
+      "new_model_calls": 0,
+      "note": "Current live runs require --max-requests. This cap does not measure remaining account quota or TPM. Schedule and expanded labels remain unfrozen."
+    },
+    {
+      "date": "2026-11-09",
+      "milestone": "E42",
+      "implemented": [
+        "typed evaluation fixtures",
+        "scenario customer selection",
+        "baseline-aware refund-effect scoring",
+        "restart-safe fixture initialization"
+      ],
+      "development_dataset": "evals/conversations/fixture-development.json",
+      "offline_verification": "Seven development scenarios in both memory modes with scripted planner; 44 related checks plus one interrupted-setup check passed",
+      "new_model_calls": 0,
+      "note": "The inventory and runner_audit below retain their original design-time counts. Candidate labels are not compiled or reviewed by this update. No collection schedule selected."
+    }
+  ],
+  "created_date": "2026-11-08",
+  "deadline": "2026-11-09",
+  "candidate_inventory": "evals/conversations/expanded-design.json",
+  "candidate_inventory_sha256": "685c47ca91e23f09395d7debcce625f0de18c99e7f3b895b37a2a6fde8be90ba",
+  "actual_new_model_calls": 0,
+  "actual_new_executed_cases": 0,
+  "quota_source": "The user subsequently supplied Model/Category/RPM/TPM/RPD headers, confirming the screenshot interpretation of 15 RPM, 250K TPM, 500 RPD for each model. Not a fresh account-usage query; remaining daily allowance unknown.",
+  "models": {
+    "gemini-3.5-flash-lite": {
+      "rpm": 15,
+      "tpm": 250000,
+      "rpd": 500,
+      "rpd_headers_confirmed_by_user": true,
+      "remaining_today": null
+    },
+    "gemini-3.1-flash-lite": {
+      "rpm": 15,
+      "tpm": 250000,
+      "rpd": 500,
+      "rpd_headers_confirmed_by_user": true,
+      "remaining_today": null
+    }
+  },
+  "inventory_audit": {
+    "specifications": 100,
+    "families": 20,
+    "cases_per_family": 5,
+    "fits_existing_control_types": 64,
+    "needs_runner_extensions": 36,
+    "visible_customer_turns": 185,
+    "template_review_groups": [
+      [
+        "candidate-001",
+        "candidate-049",
+        "candidate-055"
+      ],
+      [
+        "candidate-042",
+        "candidate-043",
+        "candidate-044",
+        "candidate-051",
+        "candidate-052"
+      ]
+    ],
+    "template_note": "Similar requests under different ownership/payment states are distinct conditions, not independent paraphrases. Review fixture distinctions and group related cases in analysis.",
+    "independent_label_review_complete": false
+  },
+  "runner_audit": [
+    {
+      "gap": "Fixed three-order catalog, A-only customer, two allowed expected IDs and 5999-cent cap",
+      "required": "Evaluation-only typed fixtures/customer selection; validate owned expected orders without changing production catalog seeding"
+    },
+    {
+      "gap": "Final oracle counts every ledger refund as a new effect",
+      "required": "Snapshot initial refunds/posts; distinguish preexisting external refunds from agent-created effects"
+    },
+    {
+      "gap": "Only initial messages/status/restart/confirmation/repeat/resume controls",
+      "required": "Explicit fixture-state changes, provider fault/status controls, withdrawn-card attempts and selected concurrency/multi-case controls; do not encode them as customer prose"
+    },
+    {
+      "gap": "Rigid outcome labels cannot express valid clarification versus correct proposal or a race with two valid winners",
+      "required": "Predeclared outcome sets with strict effect invariants; never broaden labels after seeing failures"
+    },
+    {
+      "gap": "No run-wide physical request ceiling",
+      "required": "Persist a budget checked before each HTTP call, reserve started/unknown calls, stop on exhaustion without counting unattempted trials as model behavior"
+    },
+    {
+      "gap": "Continuation requires an identical code/model/label fingerprint",
+      "required": "Freeze expanded runner and schedule first; preserve failures and resume only genuinely untouched work"
+    },
+    {
+      "gap": "Current summaries omit paired contrasts, uncertainty and family-level coverage",
+      "required": "Report unique cases/families, matched wins/losses/ties, per-family and per-model outcomes, availability and missingness separately"
+    }
+  ],
+  "schedule_choice": "expanded-memory-v1: 86 cases in family-balanced 43-case model blocks, one paired repetition, 400 requests/model",
+  "active_freeze": "evals/conversations/protocols/expanded-freeze-v1.json",
+  "schedule_options": {
+    "single_primary": {
+      "unique_cases": 100,
+      "paired_trials": 200,
+      "model": "gemini-3.5-flash-lite",
+      "repeats": 1,
+      "rough_requests_from_earlier_trial_average": [
+        800,
+        1000
+      ],
+      "feasibility": "Would exceed 500 requests if the screenshot interpretation were correct. Daily limit and remaining usage are unverified; do not promise completion."
+    },
+    "blocked_two_model": {
+      "unique_cases": 100,
+      "paired_trials": 200,
+      "repeats": 1,
+      "seed": 20261108,
+      "cases_per_model": {
+        "gemini-3.5-flash-lite": 50,
+        "gemini-3.1-flash-lite": 50
+      },
+      "rough_requests_per_model": [
+        400,
+        500
+      ],
+      "proposed_max_requests_per_model": 450,
+      "feasibility": "May exceed remaining quota, especially with long contexts. The local cap is not a measurement of remaining allowance.",
+      "assignment_policy": "Assign cases before inference, balanced 2/3 within each family and 50/50 overall. Both memory arms of a case use the same fixed model. No fallback.",
+      "analysis_policy": "Report memory comparison within each model block and declared stratified aggregate. Do not rank the models from different case sets.",
+      "proposed_assignments": [
+        {
+          "case_id": "candidate-001",
+          "family": "purchase-resolution",
+          "model": "gemini-3.5-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-002",
+          "family": "purchase-resolution",
+          "model": "gemini-3.5-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-003",
+          "family": "purchase-resolution",
+          "model": "gemini-3.5-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-004",
+          "family": "purchase-resolution",
+          "model": "gemini-3.1-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-005",
+          "family": "purchase-resolution",
+          "model": "gemini-3.1-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-006",
+          "family": "date-grounding",
+          "model": "gemini-3.1-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-007",
+          "family": "date-grounding",
+          "model": "gemini-3.5-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-008",
+          "family": "date-grounding",
+          "model": "gemini-3.5-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-009",
+          "family": "date-grounding",
+          "model": "gemini-3.1-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-010",
+          "family": "date-grounding",
+          "model": "gemini-3.5-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-011",
+          "family": "partial-details",
+          "model": "gemini-3.1-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-012",
+          "family": "partial-details",
+          "model": "gemini-3.5-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-013",
+          "family": "partial-details",
+          "model": "gemini-3.1-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-014",
+          "family": "partial-details",
+          "model": "gemini-3.1-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-015",
+          "family": "partial-details",
+          "model": "gemini-3.5-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-016",
+          "family": "referents-and-ambiguity",
+          "model": "gemini-3.5-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-017",
+          "family": "referents-and-ambiguity",
+          "model": "gemini-3.5-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-018",
+          "family": "referents-and-ambiguity",
+          "model": "gemini-3.1-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-019",
+          "family": "referents-and-ambiguity",
+          "model": "gemini-3.5-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-020",
+          "family": "referents-and-ambiguity",
+          "model": "gemini-3.1-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-021",
+          "family": "amount-revisions",
+          "model": "gemini-3.5-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-022",
+          "family": "amount-revisions",
+          "model": "gemini-3.5-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-023",
+          "family": "amount-revisions",
+          "model": "gemini-3.1-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-024",
+          "family": "amount-revisions",
+          "model": "gemini-3.1-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-025",
+          "family": "amount-revisions",
+          "model": "gemini-3.5-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-026",
+          "family": "purchase-revisions",
+          "model": "gemini-3.1-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-027",
+          "family": "purchase-revisions",
+          "model": "gemini-3.1-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-028",
+          "family": "purchase-revisions",
+          "model": "gemini-3.5-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-029",
+          "family": "purchase-revisions",
+          "model": "gemini-3.1-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-030",
+          "family": "purchase-revisions",
+          "model": "gemini-3.5-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-031",
+          "family": "numeric-evidence",
+          "model": "gemini-3.5-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-032",
+          "family": "numeric-evidence",
+          "model": "gemini-3.1-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-033",
+          "family": "numeric-evidence",
+          "model": "gemini-3.5-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-034",
+          "family": "numeric-evidence",
+          "model": "gemini-3.1-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-035",
+          "family": "numeric-evidence",
+          "model": "gemini-3.5-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-036",
+          "family": "currency-evidence",
+          "model": "gemini-3.1-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-037",
+          "family": "currency-evidence",
+          "model": "gemini-3.1-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-038",
+          "family": "currency-evidence",
+          "model": "gemini-3.1-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-039",
+          "family": "currency-evidence",
+          "model": "gemini-3.5-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-040",
+          "family": "currency-evidence",
+          "model": "gemini-3.5-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-041",
+          "family": "payment-eligibility",
+          "model": "gemini-3.1-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-042",
+          "family": "payment-eligibility",
+          "model": "gemini-3.5-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-043",
+          "family": "payment-eligibility",
+          "model": "gemini-3.1-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-044",
+          "family": "payment-eligibility",
+          "model": "gemini-3.5-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-045",
+          "family": "payment-eligibility",
+          "model": "gemini-3.5-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-046",
+          "family": "remaining-balance",
+          "model": "gemini-3.5-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-047",
+          "family": "remaining-balance",
+          "model": "gemini-3.1-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-048",
+          "family": "remaining-balance",
+          "model": "gemini-3.1-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-049",
+          "family": "remaining-balance",
+          "model": "gemini-3.1-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-050",
+          "family": "remaining-balance",
+          "model": "gemini-3.5-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-051",
+          "family": "ownership-and-lookup",
+          "model": "gemini-3.1-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-052",
+          "family": "ownership-and-lookup",
+          "model": "gemini-3.5-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-053",
+          "family": "ownership-and-lookup",
+          "model": "gemini-3.5-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-054",
+          "family": "ownership-and-lookup",
+          "model": "gemini-3.1-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-055",
+          "family": "ownership-and-lookup",
+          "model": "gemini-3.5-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-056",
+          "family": "untrusted-instructions",
+          "model": "gemini-3.5-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-057",
+          "family": "untrusted-instructions",
+          "model": "gemini-3.1-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-058",
+          "family": "untrusted-instructions",
+          "model": "gemini-3.5-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-059",
+          "family": "untrusted-instructions",
+          "model": "gemini-3.5-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-060",
+          "family": "untrusted-instructions",
+          "model": "gemini-3.1-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-061",
+          "family": "conditions-and-pauses",
+          "model": "gemini-3.1-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-062",
+          "family": "conditions-and-pauses",
+          "model": "gemini-3.5-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-063",
+          "family": "conditions-and-pauses",
+          "model": "gemini-3.5-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-064",
+          "family": "conditions-and-pauses",
+          "model": "gemini-3.1-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-065",
+          "family": "conditions-and-pauses",
+          "model": "gemini-3.5-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-066",
+          "family": "withdrawal",
+          "model": "gemini-3.5-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-067",
+          "family": "withdrawal",
+          "model": "gemini-3.1-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-068",
+          "family": "withdrawal",
+          "model": "gemini-3.1-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-069",
+          "family": "withdrawal",
+          "model": "gemini-3.1-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-070",
+          "family": "withdrawal",
+          "model": "gemini-3.5-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-071",
+          "family": "stale-confirmations",
+          "model": "gemini-3.1-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-072",
+          "family": "stale-confirmations",
+          "model": "gemini-3.5-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-073",
+          "family": "stale-confirmations",
+          "model": "gemini-3.5-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-074",
+          "family": "stale-confirmations",
+          "model": "gemini-3.1-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-075",
+          "family": "stale-confirmations",
+          "model": "gemini-3.1-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-076",
+          "family": "repeat-confirmations",
+          "model": "gemini-3.5-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-077",
+          "family": "repeat-confirmations",
+          "model": "gemini-3.5-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-078",
+          "family": "repeat-confirmations",
+          "model": "gemini-3.5-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-079",
+          "family": "repeat-confirmations",
+          "model": "gemini-3.1-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-080",
+          "family": "repeat-confirmations",
+          "model": "gemini-3.1-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-081",
+          "family": "provider-recovery",
+          "model": "gemini-3.1-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-082",
+          "family": "provider-recovery",
+          "model": "gemini-3.1-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-083",
+          "family": "provider-recovery",
+          "model": "gemini-3.5-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-084",
+          "family": "provider-recovery",
+          "model": "gemini-3.1-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-085",
+          "family": "provider-recovery",
+          "model": "gemini-3.5-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-086",
+          "family": "observed-status",
+          "model": "gemini-3.1-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-087",
+          "family": "observed-status",
+          "model": "gemini-3.1-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-088",
+          "family": "observed-status",
+          "model": "gemini-3.5-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-089",
+          "family": "observed-status",
+          "model": "gemini-3.5-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-090",
+          "family": "observed-status",
+          "model": "gemini-3.1-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-091",
+          "family": "concurrent-context",
+          "model": "gemini-3.1-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-092",
+          "family": "concurrent-context",
+          "model": "gemini-3.5-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-093",
+          "family": "concurrent-context",
+          "model": "gemini-3.1-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-094",
+          "family": "concurrent-context",
+          "model": "gemini-3.1-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-095",
+          "family": "concurrent-context",
+          "model": "gemini-3.5-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-096",
+          "family": "long-context-memory",
+          "model": "gemini-3.1-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-097",
+          "family": "long-context-memory",
+          "model": "gemini-3.1-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-098",
+          "family": "long-context-memory",
+          "model": "gemini-3.5-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-099",
+          "family": "long-context-memory",
+          "model": "gemini-3.1-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        },
+        {
+          "case_id": "candidate-100",
+          "family": "long-context-memory",
+          "model": "gemini-3.5-flash-lite",
+          "modes": [
+            "history",
+            "structured"
+          ]
+        }
+      ]
+    }
+  },
+  "budget_caveat": "Four-to-five calls per old trial is only a planning estimate; early failures lowered old usage. Re-estimate from compiled model turns and developmental pilots. 15 RPM is not a daily budget and does not guarantee TPM compliance.",
+  "acceptance_gates": [
+    "Compile candidate specs into typed fixtures, controls and machine-checkable expected outcomes; reject unsupported controls rather than silently skip them",
+    "Review ownership, monetary labels, prior-refund baseline and alternative acceptable outcomes; record reviewer and exposure status",
+    "Check exact/normalized overlap with development and prior evaluated cases; do not call reused scenarios unseen holdout",
+    "Validate fixture/oracle mechanics offline and with separate development pilots, not by tuning on the final results",
+    "Choose and freeze quota-feasible model assignment, both-arm ordering, one repeat, stop rules, code and dataset hashes",
+    "Collect and report attempted, completed, passed, infrastructure failures and untouched cases distinctly; preserve every failed attempt"
+  ],
+  "statistical_scope": "An authored coverage benchmark, not a random sample of all customer requests. 100 specifications are not automatically 100 independent samples. Report family/template grouping and conditional uncertainty; no universal n=30 or CLT acceptance claim.",
+  "prior_evidence": "Frozen v2 remains nine distinct scenarios, 54 trials, 42 passes; unit tests and development smoke counts are separate.",
+  "next_implementation": "E46 collection/export finished under frozen rules. Preserve evidence; repair observed pause/grounding defects separately, then finalize report, demo recording and submission.",
+  "collection_result": "evals/conversations/results/expanded-results-v1.json"
+}

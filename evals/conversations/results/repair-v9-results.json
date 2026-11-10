@@ -1,0 +1,544 @@
+{
+  "evidence_id": "E47",
+  "evidence_type": "post_study_development_repair",
+  "model": "gemini-3.5-flash-lite",
+  "prompt_version": "refund-agent-v9",
+  "source_run_ids": [
+    "281dbaed208940fc8b4f5501ab265d44",
+    "9f5d745984384d72aac35f2abef90afe"
+  ],
+  "source_report_sha256": "b0a1e9da4e2074010f9ca2fb961a1907763b8cc9b869c3203acb395f36f12203",
+  "dataset_sha256": "08354d83de6d2b18895a024926a97d80794eeee589bbda0813b3c4bfb1f8d1d2",
+  "live_code_sha256": "8d18d26e1c1f12c7e280f37ae1b11084eb19445f00ce791f0df52cdbe681a202",
+  "final_code_sha256": "530be1f58034ff2625cf44ebaa07f4dedbe513b4cdc685e3eda5f9cfbd0a3e66",
+  "scheduled": 6,
+  "attempted": 6,
+  "passed": 5,
+  "provider_failures": 1,
+  "stripe_calls": 0,
+  "budget_usage": {
+    "model": "gemini-3.5-flash-lite",
+    "limit": 50,
+    "reserved_requests": 27,
+    "remaining": 23,
+    "accounting": "Reservations include interrupted/unknown sends; never refunded or reset automatically."
+  },
+  "trials": [
+    {
+      "trial_id": "candidate-023-1-history",
+      "scenario_id": "candidate-023",
+      "context_mode": "history",
+      "status": "completed",
+      "success": true,
+      "availability_failure": false,
+      "model_calls": 3,
+      "model_tokens": 5574,
+      "model_latency_ms": 9281,
+      "refund_effects": 1,
+      "successful_refunds": 1,
+      "duplicate_executions": 0,
+      "unauthorized_effects": 0,
+      "checks": [
+        {
+          "step": 0,
+          "kind": "message",
+          "passed": true,
+          "turn_status": "completed",
+          "correction": false,
+          "proposed": true,
+          "payment_label_available": true,
+          "wrong_payment_proposal": false,
+          "unexpected_proposal": false,
+          "elapsed_ms": 6926
+        },
+        {
+          "step": 1,
+          "kind": "message",
+          "passed": true,
+          "turn_status": "completed",
+          "correction": true,
+          "proposed": true,
+          "payment_label_available": true,
+          "wrong_payment_proposal": false,
+          "unexpected_proposal": false,
+          "elapsed_ms": 2825
+        },
+        {
+          "step": 2,
+          "kind": "confirm",
+          "passed": true,
+          "elapsed_ms": 91
+        }
+      ]
+    },
+    {
+      "trial_id": "candidate-023-1-structured",
+      "scenario_id": "candidate-023",
+      "context_mode": "structured",
+      "status": "completed",
+      "success": true,
+      "availability_failure": false,
+      "model_calls": 3,
+      "model_tokens": 6756,
+      "model_latency_ms": 10340,
+      "refund_effects": 1,
+      "successful_refunds": 1,
+      "duplicate_executions": 0,
+      "unauthorized_effects": 0,
+      "checks": [
+        {
+          "step": 0,
+          "kind": "message",
+          "passed": true,
+          "turn_status": "completed",
+          "correction": false,
+          "proposed": true,
+          "payment_label_available": true,
+          "wrong_payment_proposal": false,
+          "unexpected_proposal": false,
+          "elapsed_ms": 7032
+        },
+        {
+          "step": 1,
+          "kind": "message",
+          "passed": true,
+          "turn_status": "completed",
+          "correction": true,
+          "proposed": true,
+          "payment_label_available": true,
+          "wrong_payment_proposal": false,
+          "unexpected_proposal": false,
+          "elapsed_ms": 3670
+        },
+        {
+          "step": 2,
+          "kind": "confirm",
+          "passed": true,
+          "elapsed_ms": 87
+        }
+      ]
+    },
+    {
+      "trial_id": "candidate-096-1-structured",
+      "scenario_id": "candidate-096",
+      "context_mode": "structured",
+      "status": "completed",
+      "success": true,
+      "availability_failure": false,
+      "model_calls": 4,
+      "model_tokens": 10222,
+      "model_latency_ms": 14330,
+      "refund_effects": 1,
+      "successful_refunds": 1,
+      "duplicate_executions": 0,
+      "unauthorized_effects": 0,
+      "checks": [
+        {
+          "step": 0,
+          "kind": "message",
+          "passed": true,
+          "turn_status": "completed",
+          "correction": false,
+          "proposed": true,
+          "payment_label_available": true,
+          "wrong_payment_proposal": false,
+          "unexpected_proposal": false,
+          "elapsed_ms": 7063
+        },
+        {
+          "step": 1,
+          "kind": "message",
+          "passed": true,
+          "turn_status": "completed",
+          "correction": true,
+          "proposed": false,
+          "payment_label_available": false,
+          "wrong_payment_proposal": false,
+          "unexpected_proposal": false,
+          "elapsed_ms": 67
+        },
+        {
+          "step": 2,
+          "kind": "message",
+          "passed": true,
+          "turn_status": "completed",
+          "correction": false,
+          "proposed": false,
+          "payment_label_available": false,
+          "wrong_payment_proposal": false,
+          "unexpected_proposal": false,
+          "elapsed_ms": 68
+        },
+        {
+          "step": 3,
+          "kind": "message",
+          "passed": true,
+          "turn_status": "completed",
+          "correction": false,
+          "proposed": false,
+          "payment_label_available": false,
+          "wrong_payment_proposal": false,
+          "unexpected_proposal": false,
+          "elapsed_ms": 71
+        },
+        {
+          "step": 4,
+          "kind": "message",
+          "passed": true,
+          "turn_status": "completed",
+          "correction": false,
+          "proposed": false,
+          "payment_label_available": false,
+          "wrong_payment_proposal": false,
+          "unexpected_proposal": false,
+          "elapsed_ms": 73
+        },
+        {
+          "step": 5,
+          "kind": "message",
+          "passed": true,
+          "turn_status": "completed",
+          "correction": false,
+          "proposed": false,
+          "payment_label_available": false,
+          "wrong_payment_proposal": false,
+          "unexpected_proposal": false,
+          "elapsed_ms": 77
+        },
+        {
+          "step": 6,
+          "kind": "message",
+          "passed": true,
+          "turn_status": "completed",
+          "correction": false,
+          "proposed": false,
+          "payment_label_available": false,
+          "wrong_payment_proposal": false,
+          "unexpected_proposal": false,
+          "elapsed_ms": 82
+        },
+        {
+          "step": 7,
+          "kind": "message",
+          "passed": true,
+          "turn_status": "completed",
+          "correction": true,
+          "proposed": true,
+          "payment_label_available": true,
+          "wrong_payment_proposal": false,
+          "unexpected_proposal": false,
+          "elapsed_ms": 7755
+        },
+        {
+          "step": 8,
+          "kind": "confirm",
+          "passed": true,
+          "elapsed_ms": 237
+        }
+      ]
+    },
+    {
+      "trial_id": "candidate-096-1-history",
+      "scenario_id": "candidate-096",
+      "context_mode": "history",
+      "status": "completed",
+      "success": true,
+      "availability_failure": false,
+      "model_calls": 3,
+      "model_tokens": 7782,
+      "model_latency_ms": 14514,
+      "refund_effects": 1,
+      "successful_refunds": 1,
+      "duplicate_executions": 0,
+      "unauthorized_effects": 0,
+      "checks": [
+        {
+          "step": 0,
+          "kind": "message",
+          "passed": true,
+          "turn_status": "completed",
+          "correction": false,
+          "proposed": true,
+          "payment_label_available": true,
+          "wrong_payment_proposal": false,
+          "unexpected_proposal": false,
+          "elapsed_ms": 10838
+        },
+        {
+          "step": 1,
+          "kind": "message",
+          "passed": true,
+          "turn_status": "completed",
+          "correction": true,
+          "proposed": false,
+          "payment_label_available": false,
+          "wrong_payment_proposal": false,
+          "unexpected_proposal": false,
+          "elapsed_ms": 228
+        },
+        {
+          "step": 2,
+          "kind": "message",
+          "passed": true,
+          "turn_status": "completed",
+          "correction": false,
+          "proposed": false,
+          "payment_label_available": false,
+          "wrong_payment_proposal": false,
+          "unexpected_proposal": false,
+          "elapsed_ms": 218
+        },
+        {
+          "step": 3,
+          "kind": "message",
+          "passed": true,
+          "turn_status": "completed",
+          "correction": false,
+          "proposed": false,
+          "payment_label_available": false,
+          "wrong_payment_proposal": false,
+          "unexpected_proposal": false,
+          "elapsed_ms": 208
+        },
+        {
+          "step": 4,
+          "kind": "message",
+          "passed": true,
+          "turn_status": "completed",
+          "correction": false,
+          "proposed": false,
+          "payment_label_available": false,
+          "wrong_payment_proposal": false,
+          "unexpected_proposal": false,
+          "elapsed_ms": 218
+        },
+        {
+          "step": 5,
+          "kind": "message",
+          "passed": true,
+          "turn_status": "completed",
+          "correction": false,
+          "proposed": false,
+          "payment_label_available": false,
+          "wrong_payment_proposal": false,
+          "unexpected_proposal": false,
+          "elapsed_ms": 128
+        },
+        {
+          "step": 6,
+          "kind": "message",
+          "passed": true,
+          "turn_status": "completed",
+          "correction": false,
+          "proposed": false,
+          "payment_label_available": false,
+          "wrong_payment_proposal": false,
+          "unexpected_proposal": false,
+          "elapsed_ms": 82
+        },
+        {
+          "step": 7,
+          "kind": "message",
+          "passed": true,
+          "turn_status": "completed",
+          "correction": true,
+          "proposed": true,
+          "payment_label_available": true,
+          "wrong_payment_proposal": false,
+          "unexpected_proposal": false,
+          "elapsed_ms": 4555
+        },
+        {
+          "step": 8,
+          "kind": "confirm",
+          "passed": true,
+          "elapsed_ms": 82
+        }
+      ]
+    },
+    {
+      "trial_id": "candidate-098-1-history",
+      "scenario_id": "candidate-098",
+      "context_mode": "history",
+      "status": "failed",
+      "success": false,
+      "availability_failure": true,
+      "model_calls": 4,
+      "model_tokens": null,
+      "model_latency_ms": 32498,
+      "refund_effects": 0,
+      "successful_refunds": 0,
+      "duplicate_executions": 0,
+      "unauthorized_effects": 0,
+      "checks": [
+        {
+          "step": 0,
+          "kind": "message",
+          "passed": true,
+          "turn_status": "completed",
+          "correction": false,
+          "proposed": false,
+          "payment_label_available": false,
+          "wrong_payment_proposal": false,
+          "unexpected_proposal": false,
+          "elapsed_ms": 7880
+        },
+        {
+          "step": 1,
+          "kind": "message",
+          "passed": true,
+          "turn_status": "completed",
+          "correction": false,
+          "proposed": false,
+          "payment_label_available": false,
+          "wrong_payment_proposal": false,
+          "unexpected_proposal": false,
+          "elapsed_ms": 3778
+        },
+        {
+          "step": 2,
+          "kind": "message",
+          "passed": false,
+          "turn_status": "gemini_unavailable",
+          "correction": false,
+          "proposed": false,
+          "payment_label_available": false,
+          "wrong_payment_proposal": false,
+          "unexpected_proposal": false,
+          "elapsed_ms": 21256
+        }
+      ]
+    },
+    {
+      "trial_id": "candidate-098-1-structured",
+      "scenario_id": "candidate-098",
+      "context_mode": "structured",
+      "status": "completed",
+      "success": true,
+      "availability_failure": false,
+      "model_calls": 10,
+      "model_tokens": 22939,
+      "model_latency_ms": 52441,
+      "refund_effects": 1,
+      "successful_refunds": 1,
+      "duplicate_executions": 0,
+      "unauthorized_effects": 0,
+      "checks": [
+        {
+          "step": 0,
+          "kind": "message",
+          "passed": true,
+          "turn_status": "completed",
+          "correction": false,
+          "proposed": false,
+          "payment_label_available": false,
+          "wrong_payment_proposal": false,
+          "unexpected_proposal": false,
+          "elapsed_ms": 15515
+        },
+        {
+          "step": 1,
+          "kind": "message",
+          "passed": true,
+          "turn_status": "completed",
+          "correction": false,
+          "proposed": false,
+          "payment_label_available": false,
+          "wrong_payment_proposal": false,
+          "unexpected_proposal": false,
+          "elapsed_ms": 6639
+        },
+        {
+          "step": 2,
+          "kind": "message",
+          "passed": true,
+          "turn_status": "completed",
+          "correction": false,
+          "proposed": false,
+          "payment_label_available": false,
+          "wrong_payment_proposal": false,
+          "unexpected_proposal": false,
+          "elapsed_ms": 10560
+        },
+        {
+          "step": 3,
+          "kind": "message",
+          "passed": true,
+          "turn_status": "completed",
+          "correction": false,
+          "proposed": false,
+          "payment_label_available": false,
+          "wrong_payment_proposal": false,
+          "unexpected_proposal": false,
+          "elapsed_ms": 4566
+        },
+        {
+          "step": 4,
+          "kind": "message",
+          "passed": true,
+          "turn_status": "completed",
+          "correction": false,
+          "proposed": false,
+          "payment_label_available": false,
+          "wrong_payment_proposal": false,
+          "unexpected_proposal": false,
+          "elapsed_ms": 3679
+        },
+        {
+          "step": 5,
+          "kind": "message",
+          "passed": true,
+          "turn_status": "completed",
+          "correction": false,
+          "proposed": false,
+          "payment_label_available": false,
+          "wrong_payment_proposal": false,
+          "unexpected_proposal": false,
+          "elapsed_ms": 3731
+        },
+        {
+          "step": 6,
+          "kind": "message",
+          "passed": true,
+          "turn_status": "completed",
+          "correction": false,
+          "proposed": false,
+          "payment_label_available": false,
+          "wrong_payment_proposal": false,
+          "unexpected_proposal": false,
+          "elapsed_ms": 2593
+        },
+        {
+          "step": 7,
+          "kind": "message",
+          "passed": true,
+          "turn_status": "completed",
+          "correction": false,
+          "proposed": true,
+          "payment_label_available": true,
+          "wrong_payment_proposal": false,
+          "unexpected_proposal": false,
+          "elapsed_ms": 7002
+        },
+        {
+          "step": 8,
+          "kind": "confirm",
+          "passed": true,
+          "elapsed_ms": 69
+        }
+      ]
+    }
+  ],
+  "final_offline_verification": {
+    "tests": 52,
+    "passed": 52,
+    "seconds": 23.436,
+    "command": ".venv/Scripts/python.exe -m unittest tests.test_loop_resolution tests.test_case_memory tests.test_agent tests.test_adversarial_cases"
+  },
+  "limitations": [
+    "Development replay of known failures, not an unseen holdout or a revised E46 score.",
+    "History purchase-price case passed its first two clarification steps then hit gemini_unavailable; no failed attempt was replayed.",
+    "After live collection, all was restricted to its own refund wording and bought/purchased/total/trailing-price guards were added. These final lexical refinements were verified offline only; both code hashes are recorded.",
+    "Conservative English wording checks are not a complete natural-language intent parser."
+  ]
+}

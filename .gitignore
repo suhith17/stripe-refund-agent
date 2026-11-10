@@ -15,6 +15,7 @@ __pycache__/
 *.sqlite*-wal
 *.sqlite*-journal
 instance/
+dist/
 dependency-check.json
 *.log
 *.pem

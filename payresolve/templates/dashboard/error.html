@@ -1,0 +1,2 @@
+{% extends 'dashboard/base.html' %}
+{% block content %}<section class="heading"><p class="eyebrow">ACTION NOT COMPLETED</p><h1>Let’s check that request.</h1></section><section class="panel"><p>{{ error }}</p><p class="muted small">{{ code }}</p><a class="button secondary" href="{{ url_for('dashboard.home') }}">Return to requests</a></section>{% endblock %}

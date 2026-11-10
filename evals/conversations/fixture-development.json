@@ -1,0 +1,99 @@
+{
+  "schema_version": "conversation-eval-v3",
+  "split": "development",
+  "scenario_date": "2026-11-05",
+  "fixture_version": "scenario-fixtures-v1",
+  "scenarios": [
+    {
+      "id": "fixture-keyboard-remaining",
+      "family": "fixture-development",
+      "customer": "b",
+      "fixture": {"orders": [
+        {"order_id": "ORD-301", "customer": "b", "description": "Mechanical keyboard", "purchased_on": "2026-10-28", "amount_minor": 10000, "refunded_minor": 3000},
+        {"order_id": "ORD-401", "customer": "a", "description": "USB-C charger", "purchased_on": "2026-10-29", "amount_minor": 2500}
+      ]},
+      "steps": [
+        {"kind": "message", "text": "Refund the full remaining balance from ORD-301.", "expected_stage": "awaiting_confirmation", "order_id": "ORD-301", "amount_minor": 7000},
+        {"kind": "restart"}, {"kind": "confirm"}, {"kind": "repeat"}
+      ]
+    },
+    {
+      "id": "fixture-fully-refunded",
+      "family": "fixture-development",
+      "customer": "b",
+      "expected_outcome": "no_execution",
+      "fixture": {"orders": [
+        {"order_id": "ORD-301", "customer": "b", "description": "Mechanical keyboard", "purchased_on": "2026-10-28", "amount_minor": 10000, "refunded_minor": 10000}
+      ]},
+      "steps": [
+        {"kind": "message", "text": "Refund USD 1 from ORD-301.", "expected_stage": "awaiting_clarification"},
+        {"kind": "restart"}
+      ]
+    },
+    {
+      "id": "fixture-unpaid",
+      "family": "fixture-development",
+      "customer": "b",
+      "expected_outcome": "no_execution",
+      "fixture": {"orders": [
+        {"order_id": "ORD-301", "customer": "b", "description": "Mechanical keyboard", "purchased_on": "2026-10-28", "amount_minor": 10000, "payment_state": "unpaid"}
+      ]},
+      "steps": [
+        {"kind": "message", "text": "Refund USD 1 from ORD-301.", "expected_stage": "awaiting_clarification"},
+        {"kind": "restart"}
+      ]
+    },
+    {
+      "id": "fixture-uncaptured",
+      "family": "fixture-development",
+      "customer": "b",
+      "expected_outcome": "no_execution",
+      "fixture": {"orders": [
+        {"order_id": "ORD-301", "customer": "b", "description": "Mechanical keyboard", "purchased_on": "2026-10-28", "amount_minor": 10000, "payment_state": "uncaptured"}
+      ]},
+      "steps": [
+        {"kind": "message", "text": "Refund USD 1 from ORD-301.", "expected_stage": "awaiting_clarification"},
+        {"kind": "restart"}
+      ]
+    },
+    {
+      "id": "fixture-disputed",
+      "family": "fixture-development",
+      "customer": "b",
+      "expected_outcome": "no_execution",
+      "fixture": {"orders": [
+        {"order_id": "ORD-301", "customer": "b", "description": "Mechanical keyboard", "purchased_on": "2026-10-28", "amount_minor": 10000, "disputed": true}
+      ]},
+      "steps": [
+        {"kind": "message", "text": "Refund USD 1 from ORD-301.", "expected_stage": "awaiting_clarification"},
+        {"kind": "restart"}
+      ]
+    },
+    {
+      "id": "fixture-partial-capture",
+      "family": "fixture-development",
+      "customer": "b",
+      "fixture": {"orders": [
+        {"order_id": "ORD-301", "customer": "b", "description": "Mechanical keyboard", "purchased_on": "2026-10-28", "amount_minor": 10000, "captured_minor": 3500, "refunded_minor": 1000}
+      ]},
+      "steps": [
+        {"kind": "message", "text": "Refund the full remaining balance from ORD-301.", "expected_stage": "awaiting_confirmation", "order_id": "ORD-301", "amount_minor": 2500},
+        {"kind": "restart"}, {"kind": "confirm"}, {"kind": "repeat"}
+      ]
+    },
+    {
+      "id": "fixture-foreign-keyboard",
+      "family": "fixture-development",
+      "customer": "a",
+      "expected_outcome": "no_execution",
+      "fixture": {"orders": [
+        {"order_id": "ORD-301", "customer": "b", "description": "Mechanical keyboard", "purchased_on": "2026-10-28", "amount_minor": 10000},
+        {"order_id": "ORD-401", "customer": "a", "description": "USB-C charger", "purchased_on": "2026-10-29", "amount_minor": 2500}
+      ]},
+      "steps": [
+        {"kind": "message", "text": "Refund USD 1 from ORD-301.", "expected_stage": "awaiting_clarification"},
+        {"kind": "restart"}
+      ]
+    }
+  ]
+}

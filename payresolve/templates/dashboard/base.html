@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}PayResolve{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='case.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='customer.css') }}">
+  <script src="{{ url_for('static', filename='dashboard.js') }}" defer></script>
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="{{ url_for('dashboard.demo_purchases') if customer is defined else url_for('dashboard.home') }}"><span class="brand-icon">P<span>r</span></span>PayResolve</a><span class="environment"><span class="dot"></span>Sandbox workspace</span></header>
+  <main class="{% block main_class %}{% endblock %}">{% block content %}{% endblock %}</main>
+  <footer><span>PayResolve · CAP6938</span><span>Local workspace · Synthetic requests only</span></footer>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "study_id": "memory-final-v2",
+  "created_at": "2026-11-08T00:02:17.445971+00:00",
+  "authorization": "User explicitly requested finishing all planned testing and benchmarking, superseding the previous session collection cap.",
+  "source_run_id": "b56bb05084ff4187a698cda0775cf0c1",
+  "untouched_trials_at_authorization": 31,
+  "policy": "Continue only original untouched trials using unchanged frozen code/model/labels and 15 RPM pacing. Retain every attempted outcome. No retry of failed trials. Pause at least 60 seconds after a provider service error before another segment. Stop on a quota/access/configuration failure or unresolved worker failure requiring diagnosis. No unrelated legacy benchmark expansion.",
+  "driver_sha256": "4251467a75fe838cca63d9e179c3673fa4e9298594fd15d15ecdbb4a93474865",
+  "command": ".venv/Scripts/python.exe -m tools.continue_conversation_study --source-run 12e3b2724fab461ca66c76200d0a9904 --finish-untouched",
+  "offline_full_suite": "244 tests passed",
+  "continuation_checks": "5 tests passed"
+}

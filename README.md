@@ -1,145 +1,236 @@
-# PayResolve / Stripe Refund Agent
+# PayResolve
 
-CAP6938 project implementing an LLM-assisted refund workflow with Python,
-SQLite, and Stripe's sandbox. The local Flask API provides persistent request
-intake and a read-only Stripe connection check. M1 adds explicit CLI commands
-for controlled sandbox payments, validated refunds, and final-state verification.
-M2 adds Gemini extraction, persisted dry-run proposals, and separate explicit
-approval/execution commands. Natural-language requests stay `received`;
-analysis does not execute a refund. See [reviewed execution](docs/reviewed-execution.md).
+CAP6938 semester project: a local refund chat using Python, Flask, SQLite, Gemini
+and Stripe sandbox. The agent finds a customer's purchase, asks for missing details,
+and prepares a validated proposal. The customer confirms the exact purchase and
+amount once; the backend submits, verifies and recovers the operation. Saved cases
+and a visible action timeline explain what happened.
 
-## Run on Windows with Git Bash
+**Submission status:** application and evaluation evidence are included. The
+eight-page report is prepared and submitted separately by the author; a final
+demonstration recording is not included. This is a local USD-only prototype with a demo customer selector,
+not production authentication.
 
-The existing `.venv` uses Python 3.15.1. Dependencies were checked with a
-wheel-only resolver dry run before installation and tested on that interpreter.
-SQLite and the test runner are part of Python. No separate database installation
-is needed.
+## Start here
+
+| File | Purpose |
+| --- | --- |
+| [Architecture](docs/architecture.md) | Agent loop, memory, confirmation boundary and module map |
+| [Final study](docs/final-study.md) | Frozen protocol, actual results, limitations and reproduction |
+
+The older single-message benchmark is separate from the final
+conversation-memory study.
+
+## Repository layout
+
+| Folder | Keep for |
+| --- | --- |
+| `payresolve/` | Application, agent, payment workflow, CLI and web assets |
+| `tests/` | Offline regression checks and the scripted acceptance demo |
+| `tools/` | Setup/backup checks, dataset-label preflight, study continuation and results export |
+| `evals/conversations/` | Runnable conversation datasets and the frozen source archive |
+| `evals/conversations/results/` | Sanitized measured outcomes, including failures and later repairs |
+| `evals/conversations/protocols/` | Study freezes and continuation amendments |
+| `evals/benchmark/`, `evals/recovery/` | Earlier experiments still used by CLI commands and tests |
+| `docs/` | Architecture and final experimental study |
+
+Local `.venv/`, `instance/`, caches and `.env` are ignored, not submission files.
+The raw runs in `instance/` remain useful local evidence; do not delete the live
+database or reset demo balances as part of preparing a GitHub ZIP.
+
+## Setup
+
+Tested environment: **Windows, Git Bash, Python 3.15.1**. SQLite is bundled with
+Python. Preserve an existing `.venv`; check compatibility before installing or
+changing dependencies. Commands below run from the repository root.
 
 ```bash
-# From the repository root. Activation is optional with this explicit path.
+# Fresh checkout only:
+py -3.15 -m venv .venv
 .venv/Scripts/python.exe --version
 .venv/Scripts/python.exe -m pip install --dry-run --only-binary=:all: -r requirements.txt
+# Install only if the resolver check succeeds:
 .venv/Scripts/python.exe -m pip install --only-binary=:all: -r requirements.txt
 .venv/Scripts/python.exe -m pip check
+
+# Only if .env does not already exist:
+cp -n .env.example .env
 ```
 
-`requirements.in` lists direct dependencies; `requirements.txt` pins the complete
-verified set. Recheck compatibility before changing those pins. See
-[verification notes](docs/verification.md) for versions, sources, and test results.
+On macOS/Linux, use the intended installed Python to create the environment and
+replace `.venv/Scripts/python.exe` with `.venv/bin/python`; repeat the compatibility
+check there. Those platforms have not been verified by this project.
 
-If `.env` does not exist, copy `.env.example` to `.env`. Open `.env` locally and
-set `STRIPE_SECRET_KEY` to a secret key from your Stripe sandbox. A restricted
-test key needs **Balance: Read** for the connection check, plus PaymentIntent,
-Charge, and Refund permissions for the M1 operations used. Existing environment
-variables take precedence over `.env` values. Leave the key empty for offline use.
+For live chat, set `GEMINI_API_KEY` and a **Stripe sandbox** `STRIPE_SECRET_KEY` in
+your local `.env`. The default model is `gemini-3.5-flash-lite`. An optional chat
+backup is `gemini-3.1-flash-lite` via `AGENT_FALLBACK_MODEL`; enable it only if your
+account has access. Set `GEMINI_REQUESTS_PER_MINUTE` to your account's limit (the
+observed project limit was 15). The limiter does not enforce token/day quotas or
+control other apps. Conversation evaluation never uses the backup.
+
+### Private credential handoff for grading
+
+Credentials are intentionally absent from Git and GitHub's ZIP. The project author
+must deliver a temporary Gemini key and a Stripe **test-mode** secret key separately
+through the course's private submission channel. Do not put either value in the
+repository, README, report, GitHub issue, or submission comment visible to other
+students. The grader should copy `.env.example` to `.env` in the repository root and
+fill only these entries:
+
+```dotenv
+GEMINI_API_KEY=provided_gemini_key
+STRIPE_SECRET_KEY=provided_stripe_test_key
+```
+
+The remaining defaults in `.env.example` are sufficient for the demo. This command
+checks that both values loaded without printing either secret:
 
 ```bash
-.venv/Scripts/python.exe -m payresolve --check-stripe
-# Expected with a valid sandbox key: {"status": "connected", "livemode": false}
+.venv/Scripts/python.exe -c "from payresolve.config import Settings; s=Settings.from_environment(); print({'gemini_key_loaded': bool(s.gemini_api_key), 'stripe_test_key_loaded': bool(s.stripe_secret_key), 'model': s.gemini_model})"
+```
 
+Both `*_key_loaded` values should be `True`. Revoke or rotate the shared keys after
+grading. Offline tests and the scripted acceptance demo below require no keys.
+
+## Run the customer demo
+
+```bash
+# Creates five sandbox payments and three demo customers; no refunds:
+.venv/Scripts/python.exe -m payresolve demo add-customer --namespace presentation-nov9
 .venv/Scripts/python.exe -m payresolve
-# http://127.0.0.1:8000 ; Ctrl+C to stop
 ```
 
-The development server binds to loopback with debug mode and reloading disabled.
-This prototype has no user authentication; keep it local and use synthetic data.
-The default database is `instance/payresolve.db`, relative to the repository root.
-Override `DATABASE_PATH` in `.env` if needed. SQLite files and `.env` are ignored
-by Git; never commit API keys or enable verbose SDK logging with real credentials.
+Open **http://127.0.0.1:8000/demo**, select customer A for that namespace, and try
+`Refund the headphones I bought last week.` Then answer `Friday. Just refund $1.`
+Review the card before confirming. **Verified** means retrieved Stripe state
+matched the confirmed operation; the timeline shows the actual tools and result.
 
-## API
+SQLite initializes automatically at `instance/payresolve.db`. Cases survive
+restarts; reselect the same customer if the session resets. Restart after code or
+configuration changes. Recovery runs while the app is running.
 
-| Method | Path | Behavior |
-| --- | --- | --- |
-| GET | `/health` | Checks the backend and SQLite; does not contact Stripe. |
-| POST | `/requests` | Stores a JSON `message` and returns a UUID, UTC timestamp, and `received` status. |
-| GET | `/requests/<id>` | Retrieves a stored request; unknown IDs return 404. |
-| GET | `/stripe/status` | Reads Stripe's balance endpoint and requires `livemode=false`. |
+Reseeding preserves existing payments and balances. Use a **new namespace** for
+fresh demo purchases; it does not restore refunded funds. Evaluation still uses
+two customers and three orders. The older operator workspace at `/` is retained
+for development; `/demo` is the main product.
+
+## Offline grading and checks
+
+These checks use scripted models, temporary databases and simulated payments.
+They need no API keys and make no provider calls:
 
 ```bash
-curl http://127.0.0.1:8000/health
-curl -i http://127.0.0.1:8000/requests \
-  -H 'Content-Type: application/json' \
-  -d '{"message":"Refund the duplicate $39.99 payment for order 4812."}'
-# Copy the returned UUID into this URL:
-curl http://127.0.0.1:8000/requests/RETURNED_UUID
-curl http://127.0.0.1:8000/stripe/status
+.venv/Scripts/python.exe -m unittest discover -s tests
+.venv/Scripts/python.exe -m tests.acceptance_demo
+.venv/Scripts/python.exe tools/check_setup.py
+.venv/Scripts/python.exe -m payresolve.conversation_eval validate
 ```
 
-`POST /requests` accepts only `message`, with 1–4000 characters after trimming
-outer whitespace and a 16 KiB body limit. Messages are stored as text, never
-executed as instructions or SQL. Each successful POST creates a new intake record;
-it does not initiate a refund. Missing credentials leave intake usable and return
-503 from `/stripe/status`. Live/publishable/malformed keys are rejected at startup.
-Stripe errors return fixed messages without the key or upstream response body.
-
-## Verify
+The expanded development dataset has 86 executable scenarios from the 100-case
+design inventory; 14 unsupported candidates are listed in its
+[readiness audit](evals/conversations/results/expanded-readiness.json). The expanded
+model study is recorded below; the dataset is authored development
+coverage, not an unseen holdout. To check its fixture/payment labels
+offline (no model calls):
 
 ```bash
-.venv/Scripts/python.exe -m unittest discover -s tests -v
-.venv/Scripts/python.exe -m pip check
-git diff --check
-git check-ignore .env .venv/pyvenv.cfg instance/payresolve.db
+.venv/Scripts/python.exe tools/check_conversation_dataset.py --dataset evals/conversations/expanded-development.json
 ```
 
-Tests use temporary SQLite databases and simulated Stripe responses; they do not
-read your `.env` or contact Stripe. `--check-stripe` is the separate real-network
-check. It makes only a balance retrieval request and does not create payments or
-refunds. A false `livemode` confirms test mode; the key determines which sandbox.
+This checks payment eligibility, not natural-language interpretation or complete
+conversations. The audit records overlaps, a known full-refund wording limitation,
+and the absence of independent human label review.
 
-## Next increments from the proposal
+The acceptance demo covers restart, lost-response recovery, repeated confirmation
+and revised amounts. `check_setup.py` checks an isolated copy using the existing
+interpreter; it is not a fresh dependency installation. Generated evidence stays
+under ignored `instance/` directories.
 
-M1 is implemented and verified. See [M1 usage and results](docs/m1.md) for the
-command reference, retry rules, and actual sandbox fixture results. To inspect
-the stored fixtures without contacting Stripe:
+For a **real Gemini / simulated-payment** development run:
 
 ```bash
-.venv/Scripts/python.exe -m payresolve m1 list-payments
+.venv/Scripts/python.exe -m payresolve.conversation_eval run --limit 1 --repeats 1 --max-requests 20
 ```
 
-The first M2 increment is implemented. Set `GEMINI_API_KEY` in your local `.env`
-and `GEMINI_MODEL=gemini-3.8-flash`. `.env.example` is the shareable template with
-empty key fields; `.env` contains your actual secrets and is ignored by Git.
-Use only synthetic requests. See [M2 usage and verification](docs/m2.md).
-For analysis-only availability fallback, optionally set
-`GEMINI_FALLBACK_MODEL=gemini-3.5-flash-lite`. Flash-Lite passed all 20 development
-cases. Evaluations ignore fallback so their model attribution stays explicit.
+That command uses model quota but never calls Stripe. Preserve failed runs.
+The explicit cap covers HTTP request reservations across the run and its
+continuations. Interrupted/unknown sends remain counted. Twenty is an example
+development cap, not a promise that the run fits or a measurement of available
+quota. Reports distinguish budget stops from provider failures and leave untouched
+trials unattempted. The cap does not reset daily or account for other applications;
+choose it within your remaining allowance. Keep the original run directory when
+continuing because it owns the shared budget ledger.
+
+## Results and reproducibility
+
+**Final repaired-version collection: 151/172 passed (87.8%); all scheduled trials
+attempted, zero untouched.** It covers 86 authored scenarios in 19 families,
+with both conversation-history and structured-memory modes. Retained failures:
+20 provider failures and one behavior failure. History passed 76/86; structured
+memory passed 75/86. No general memory advantage is established.
+
+See [expanded-results-v5.json](evals/conversations/results/expanded-results-v5.json)
+and the [study record](docs/final-study.md). All previous attempts and rate-limit
+stops remain preserved. Collection completed through declared continuations after
+a reported billing change and replacement API key; the model assignments, prompt,
+oracle, datasets and original request budgets stayed fixed. These provider/account
+changes are disclosed, so the result is not an uninterrupted single-account run.
+
+No wrong-payment proposals, unexpected proposals, duplicate executions or
+unauthorized effects were observed in the repaired-version collection. These are
+bounded observations with live Gemini and simulated payments, not safety guarantees.
+The conversation study made zero Stripe calls. Labels lack independent human
+review and the scenarios are exposed development cases, not an unseen holdout.
+
+The original complete prompt-v8 study remains **137/172** in
+[expanded-results-v1.json](evals/conversations/results/expanded-results-v1.json).
+The repaired-version E48 stop snapshot remains **133/148 attempted**, with 24
+then untouched, in [v2](evals/conversations/results/expanded-results-v2.json).
+Intermediate v3/v4 exports are cumulative checkpoints, not additional datasets;
+never add their counts. The separate repair smoke is **5/6**, and the earlier
+nine-scenario repeated comparison remains **42/54**. Their failed outcomes are
+preserved in the study record.
+
+Reproduce the measured code from
+[frozen-expanded-v2.zip](evals/conversations/frozen-expanded-v2.zip) and its
+[freeze](evals/conversations/protocols/expanded-freeze-v2.json), with continuation
+conditions documented in the v3/v4/v5 protocol files. Do not pool the original
+v8 result with the repaired v9 result or interpret their difference as an isolated
+causal effect of memory or repairs.
+
+Final offline checks: **298 tests passed** after the post-study citation repair; a clean source copy with an empty
+database passed startup, route and persistence checks using the existing Python
+3.15.1 environment. Dependency consistency passed; no fresh install was performed.
+
+The working application includes the E52 same-order citation repair, tested offline.
+The frozen archive preserves the pre-E52 code measured in the 151/172 study.
+Live results require the TA's own provider credentials and available model access;
+provider availability and generated outputs may differ. No credentials or existing
+database are required for the offline tests and scripted acceptance workflow.
+
+## GitHub and the grading ZIP
+
+**The simplest option is GitHub's Code → Download ZIP**, after committing and
+pushing the cleaned repository. GitHub downloads repository files, not uncommitted
+local edits. Ignored local files stay out unless they were previously tracked.
+Review changes before committing and pushing:
 
 ```bash
-.venv/Scripts/python.exe -m payresolve m2 analyze --message 'Refund USD 5 from pi_YOUR_SANDBOX_PAYMENT'
-.venv/Scripts/python.exe -m payresolve m2 analyze --request-id YOUR_REQUEST_UUID
-.venv/Scripts/python.exe -m payresolve m2 show YOUR_ANALYSIS_UUID
-# Separate live-model evaluation, with fixed synthetic payment state:
-.venv/Scripts/python.exe -m payresolve m2 eval --limit 2
-```
-
-1. Add M2 clarification handling. Reviewed execution through the deterministic
-   M1 workflow is implemented; its first manual sandbox run remains to be performed.
-2. M3–M5: labeled benchmark cases, recovery and failure injection, audit events,
-   latency/token/cost measurements, and final Stripe-state evaluation.
-
-The supplied proposal is design context; the full agent and evaluation pipeline
-are not implemented yet.
-
-## GitHub checkpoint
-
-`.env`, `.venv`, local databases, and generated reports are ignored. Commit the
-source, tests, documentation, dependency pins, and empty-key `.env.example`:
-
-```bash
-git add .gitignore README.md .env.example payresolve tests evals docs requirements.in requirements.txt
+git status --short
+git add -A
 git diff --cached --stat
-git commit -m "Add validated refund proposals and reviewed sandbox execution"
-```
-
-The `origin` remote is configured for
-[suhith17/stripe-refund-agent](https://github.com/suhith17/stripe-refund-agent).
-After committing, push your current branch:
-
-```bash
+git diff --cached --check
+git commit -m "Prepare PayResolve source and evaluation submission"
 git push -u origin HEAD
 ```
 
-Keep actual API keys in the ignored `.env` file. Before committing, review the
-staged files to ensure they contain no credentials or local databases. Commit
-only the empty-key `.env.example` template; never force-add `.env` or the database.
+Open the intended branch on GitHub, choose **Code → Download ZIP**, and submit
+that archive when the report and other required deliverables are finished.
+Never force-add ignored keys or databases, and do not ZIP the entire local folder.
+
+There is no separate ZIP-builder requirement. Redownload from GitHub after final
+edits; a source snapshot does not imply the report is finished. Generated local
+archives remain ignored and should not be committed.
+
+`requirements.in` lists direct dependencies; `requirements.txt` pins the verified
+set. Older command references are preserved in the development history.

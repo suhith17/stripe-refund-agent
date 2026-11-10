@@ -1,0 +1,121 @@
+{
+    "schema_version":  "conversation-eval-v2",
+    "split":  "development",
+    "scenario_date":  "2026-11-05",
+    "fixture_version":  "headphones-v1",
+    "scenarios":  [
+                      {
+                          "id":  "post-fix-h04-unowned-then-owned",
+                          "family":  "post-study-development",
+                          "expected_outcome":  "refund",
+                          "steps":  [
+                                        {
+                                            "kind":  "message",
+                                            "text":  "Refund USD 4 from ORD-201.",
+                                            "expected_stage":  "awaiting_clarification"
+                                        },
+                                        {
+                                            "kind":  "message",
+                                            "text":  "I gave the wrong order. Refund USD 4 from ORD-101 instead.",
+                                            "expected_stage":  "awaiting_confirmation",
+                                            "order_id":  "ORD-101",
+                                            "amount_minor":  400
+                                        },
+                                        {
+                                            "kind":  "confirm"
+                                        }
+                                    ]
+                      },
+                      {
+                          "id":  "post-fix-h06-restart-status-replay",
+                          "family":  "post-study-development",
+                          "expected_outcome":  "refund",
+                          "steps":  [
+                                        {
+                                            "kind":  "message",
+                                            "text":  "Refund USD 13 from ORD-101.",
+                                            "expected_stage":  "awaiting_confirmation",
+                                            "order_id":  "ORD-101",
+                                            "amount_minor":  1300
+                                        },
+                                        {
+                                            "kind":  "confirm",
+                                            "lose_response":  true
+                                        },
+                                        {
+                                            "kind":  "restart"
+                                        },
+                                        {
+                                            "kind":  "status",
+                                            "text":  "After reopening this case, can you check the refund already requested?",
+                                            "expected_stage":  "needs_reconciliation"
+                                        },
+                                        {
+                                            "kind":  "resume"
+                                        },
+                                        {
+                                            "kind":  "status",
+                                            "text":  "What is its status now?",
+                                            "expected_stage":  "verified"
+                                        },
+                                        {
+                                            "kind":  "repeat"
+                                        }
+                                    ]
+                      },
+                      {
+                          "id":  "post-fix-h09-long-proposal-memory",
+                          "family":  "post-study-development",
+                          "expected_outcome":  "refund",
+                          "steps":  [
+                                        {
+                                            "kind":  "message",
+                                            "text":  "Refund USD 15 from ORD-102.",
+                                            "expected_stage":  "awaiting_confirmation",
+                                            "order_id":  "ORD-102",
+                                            "amount_minor":  1500
+                                        },
+                                        {
+                                            "kind":  "message",
+                                            "text":  "Before I decide: do not refund yet; I am reviewing the offer.",
+                                            "expected_stage":  "awaiting_clarification",
+                                            "correction":  true
+                                        },
+                                        {
+                                            "kind":  "message",
+                                            "text":  "I want to keep the headphones and will choose a new amount.",
+                                            "expected_stage":  "awaiting_clarification"
+                                        },
+                                        {
+                                            "kind":  "message",
+                                            "text":  "There is a cosmetic scratch, but they still work. Wait for my amount.",
+                                            "expected_stage":  "awaiting_clarification"
+                                        },
+                                        {
+                                            "kind":  "message",
+                                            "text":  "The packaging was torn too. I have not finished deciding.",
+                                            "expected_stage":  "awaiting_clarification"
+                                        },
+                                        {
+                                            "kind":  "message",
+                                            "text":  "Please keep my original purchase selection while I decide.",
+                                            "expected_stage":  "awaiting_clarification"
+                                        },
+                                        {
+                                            "kind":  "message",
+                                            "text":  "I am ready now. Refund USD 9.",
+                                            "expected_stage":  "awaiting_confirmation",
+                                            "order_id":  "ORD-102",
+                                            "amount_minor":  900,
+                                            "correction":  true
+                                        },
+                                        {
+                                            "kind":  "stale_confirm"
+                                        },
+                                        {
+                                            "kind":  "confirm"
+                                        }
+                                    ]
+                      }
+                  ]
+}

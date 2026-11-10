@@ -11,7 +11,7 @@ from payresolve import create_app
 from payresolve.config import Settings
 from payresolve.stripe_gateway import SandboxError, StripeSandbox
 
-TEST_KEY = "sk_test_fakeForUnitTestsOnly"
+TEST_KEY = "sk_test_fixture"
 
 
 class StripeTests(unittest.TestCase):

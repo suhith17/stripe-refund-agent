@@ -1,0 +1,432 @@
+{
+  "$defs": {
+    "BenchmarkCase": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[a-z][a-z0-9_-]{0,79}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "family_id": {
+          "pattern": "^[a-z][a-z0-9_-]{0,79}$",
+          "title": "Family Id",
+          "type": "string"
+        },
+        "category": {
+          "enum": [
+            "eligible_partial",
+            "eligible_full",
+            "missing_information",
+            "ambiguous",
+            "ineligible_payment",
+            "invalid_amount",
+            "unrelated_adversarial"
+          ],
+          "title": "Category",
+          "type": "string"
+        },
+        "tags": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Tags",
+          "type": "array"
+        },
+        "review_status": {
+          "enum": [
+            "draft",
+            "reviewed"
+          ],
+          "title": "Review Status",
+          "type": "string"
+        },
+        "rationale": {
+          "maxLength": 2000,
+          "minLength": 10,
+          "title": "Rationale",
+          "type": "string"
+        },
+        "payments": {
+          "items": {
+            "$ref": "#/$defs/PaymentFixture"
+          },
+          "maxItems": 10,
+          "title": "Payments",
+          "type": "array"
+        },
+        "initial": {
+          "$ref": "#/$defs/LabeledTurn"
+        },
+        "clarifications": {
+          "items": {
+            "$ref": "#/$defs/LabeledTurn"
+          },
+          "maxItems": 5,
+          "title": "Clarifications",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "family_id",
+        "category",
+        "tags",
+        "review_status",
+        "rationale",
+        "payments",
+        "initial"
+      ],
+      "title": "BenchmarkCase",
+      "type": "object"
+    },
+    "ExpectedDecision": {
+      "additionalProperties": false,
+      "properties": {
+        "action": {
+          "enum": [
+            "propose_refund",
+            "clarify",
+            "reject",
+            "no_action"
+          ],
+          "title": "Action",
+          "type": "string"
+        },
+        "reason_codes": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 10,
+          "minItems": 1,
+          "title": "Reason Codes",
+          "type": "array"
+        },
+        "payment_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Payment Id"
+        },
+        "amount_minor": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Amount Minor"
+        },
+        "currency": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Currency"
+        }
+      },
+      "required": [
+        "action",
+        "reason_codes"
+      ],
+      "title": "ExpectedDecision",
+      "type": "object"
+    },
+    "Intent": {
+      "additionalProperties": false,
+      "properties": {
+        "intent": {
+          "enum": [
+            "refund",
+            "other",
+            "unclear"
+          ],
+          "title": "Intent",
+          "type": "string"
+        },
+        "payment_ids": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 5,
+          "title": "Payment Ids",
+          "type": "array"
+        },
+        "order_id": {
+          "anyOf": [
+            {
+              "maxLength": 100,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Order Id"
+        },
+        "refund_type": {
+          "enum": [
+            "full",
+            "partial",
+            "unspecified"
+          ],
+          "title": "Refund Type",
+          "type": "string"
+        },
+        "amount": {
+          "anyOf": [
+            {
+              "maxLength": 12,
+              "pattern": "^-?\\d{1,8}(?:\\.\\d{1,2})?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Amount"
+        },
+        "amount_evidence": {
+          "anyOf": [
+            {
+              "maxLength": 100,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Amount Evidence"
+        },
+        "currency": {
+          "anyOf": [
+            {
+              "pattern": "^[a-z]{3}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Currency"
+        },
+        "ambiguous": {
+          "title": "Ambiguous",
+          "type": "boolean"
+        },
+        "reason": {
+          "anyOf": [
+            {
+              "maxLength": 300,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Reason"
+        }
+      },
+      "required": [
+        "intent",
+        "payment_ids",
+        "order_id",
+        "refund_type",
+        "amount",
+        "amount_evidence",
+        "currency",
+        "ambiguous",
+        "reason"
+      ],
+      "title": "Intent",
+      "type": "object"
+    },
+    "LabeledTurn": {
+      "additionalProperties": false,
+      "properties": {
+        "message": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Message",
+          "type": "string"
+        },
+        "reference_intent": {
+          "$ref": "#/$defs/Intent"
+        },
+        "scored_fields": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 10,
+          "minItems": 1,
+          "title": "Scored Fields",
+          "type": "array"
+        },
+        "expected_decision": {
+          "$ref": "#/$defs/ExpectedDecision"
+        }
+      },
+      "required": [
+        "message",
+        "reference_intent",
+        "scored_fields",
+        "expected_decision"
+      ],
+      "title": "LabeledTurn",
+      "type": "object"
+    },
+    "PaymentFixture": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^pi_[A-Za-z0-9]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "amount_minor": {
+          "minimum": 0,
+          "title": "Amount Minor",
+          "type": "integer"
+        },
+        "captured_minor": {
+          "minimum": 0,
+          "title": "Captured Minor",
+          "type": "integer"
+        },
+        "refunded_minor": {
+          "minimum": 0,
+          "title": "Refunded Minor",
+          "type": "integer"
+        },
+        "currency": {
+          "pattern": "^[a-z]{3}$",
+          "title": "Currency",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "succeeded",
+            "requires_payment_method",
+            "requires_capture",
+            "canceled",
+            "processing"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "paid": {
+          "title": "Paid",
+          "type": "boolean"
+        },
+        "captured": {
+          "title": "Captured",
+          "type": "boolean"
+        },
+        "disputed": {
+          "title": "Disputed",
+          "type": "boolean"
+        },
+        "managed": {
+          "title": "Managed",
+          "type": "boolean"
+        },
+        "identity_matches": {
+          "title": "Identity Matches",
+          "type": "boolean"
+        },
+        "unresolved_operation": {
+          "title": "Unresolved Operation",
+          "type": "boolean"
+        },
+        "livemode": {
+          "title": "Livemode",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "amount_minor",
+        "captured_minor",
+        "refunded_minor",
+        "currency",
+        "status",
+        "paid",
+        "captured",
+        "disputed",
+        "managed",
+        "identity_matches",
+        "unresolved_operation",
+        "livemode"
+      ],
+      "title": "PaymentFixture",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "dataset_id": {
+      "pattern": "^[a-z][a-z0-9_-]{0,79}$",
+      "title": "Dataset Id",
+      "type": "string"
+    },
+    "split": {
+      "enum": [
+        "development",
+        "test"
+      ],
+      "title": "Split",
+      "type": "string"
+    },
+    "author": {
+      "maxLength": 200,
+      "minLength": 1,
+      "title": "Author",
+      "type": "string"
+    },
+    "description": {
+      "maxLength": 2000,
+      "minLength": 10,
+      "title": "Description",
+      "type": "string"
+    },
+    "cases": {
+      "items": {
+        "$ref": "#/$defs/BenchmarkCase"
+      },
+      "maxItems": 500,
+      "minItems": 1,
+      "title": "Cases",
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "dataset_id",
+    "split",
+    "author",
+    "description",
+    "cases"
+  ],
+  "title": "BenchmarkDataset",
+  "type": "object"
+}

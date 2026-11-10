@@ -1,0 +1,28 @@
+{% extends 'dashboard/base.html' %}
+{% block main_class %}customer-workspace{% endblock %}
+{% block content %}
+<div class="workspace-toolbar">
+  <a class="workspace-home" href="{{ url_for('dashboard.demo_purchases') }}">Refund assistant <span>Demo workspace</span></a>
+  <form class="customer-switch" method="post" action="{{ url_for('dashboard.select_demo_customer') }}">
+    <input type="hidden" name="csrf" value="{{ csrf }}">
+    <label for="customer">Demo customer</label>
+    <select id="customer" name="customer_id" required>{% for item in customers %}<option value="{{ item.id }}" {% if customer and item.id == customer.id %}selected{% endif %}>{{ item.name }} · {{ item.namespace }}</option>{% endfor %}</select>
+    <button class="secondary" type="submit" {% if not customers %}disabled{% endif %}>Switch</button>
+  </form>
+</div>
+<div class="customer-grid">
+  <nav class="case-list" aria-label="Your cases">
+    <a class="button primary full-width" href="{{ url_for('dashboard.demo_purchases') }}#new-conversation">+ New conversation</a>
+    <h2>Your cases</h2>
+    <div class="case-list-items">{% for item in cases %}
+      <a class="case-list-item {% if case is defined and case.id == item.id %}active{% endif %}" href="{{ url_for('dashboard.case_detail',case_id=item.id) }}" {% if case is defined and case.id == item.id %}aria-current="page"{% endif %}>
+        <strong>{{ item.title|truncate(55) }}</strong>
+        <span>{{ item.stage|replace('_',' ') }}{% if item.amount_minor and item.stage in ('awaiting_confirmation','processing','pending','verified','needs_reconciliation') %} · {{ item.amount_minor|money }}{% endif %}</span>
+        <time>{{ item.updated_at[:10] }} · {{ item.updated_at[11:16] }} UTC</time>
+      </a>
+    {% else %}<p class="muted small">Your conversations will appear here. Reopen a case to continue where you left off.</p>{% endfor %}</div>
+    <p class="scope-note">Synthetic purchases only.<br>The selector simulates identity; it is not a login.</p>
+  </nav>
+  <div class="customer-content">{% block workspace_content %}{% endblock %}</div>
+</div>
+{% endblock %}

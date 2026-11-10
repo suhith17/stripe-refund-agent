@@ -1,0 +1,17 @@
+{% extends 'dashboard/customer_shell.html' %}
+{% block title %}Refund assistant &middot; PayResolve{% endblock %}
+{% block workspace_content %}
+<div class="start-layout">
+<section class="panel start-chat" id="new-conversation">
+<div class="assistant-mark" aria-hidden="true">P</div><p class="eyebrow">LET'S SORT IT OUT</p><h1>How can I help with your purchase?</h1>
+<p class="muted">Tell me what you bought and what you'd like refunded. I'll find the purchase, check the details and prepare a refund for your confirmation.</p>
+{% if customer %}<form method="post" action="{{ url_for('dashboard.create_case') }}" data-wait="Opening your case and searching your purchases."><input type="hidden" name="csrf" value="{{ csrf }}"><label for="message">Start a conversation</label><textarea id="message" name="message" maxlength="4000" required placeholder="Refund the headphones I bought last week."></textarea><div class="composer-footer"><span class="muted small">Nothing is submitted until you confirm.</span><button class="primary" type="submit">Start conversation &rarr;</button></div><p class="working" role="status" hidden></p></form>
+{% else %}<p class="notice">Choose a demo customer above to start.{% if not customers %} The catalog needs setup; follow the README.{% endif %}</p>{% endif %}
+<div class="welcome-steps"><span>01 &middot; Find your purchase</span><span>02 &middot; Review the refund</span><span>03 &middot; Confirm once</span></div></section>
+<aside class="panel purchase-browser"><p class="eyebrow">AT A GLANCE</p><h2>Your purchases</h2>
+{% if customer %}<p class="muted small">{{ customer.name }} &middot; Original payment amounts</p>
+<details {% if query or previous_week %}open{% endif %}><summary>Find a purchase</summary><form method="get" action="{{ url_for('dashboard.demo_purchases') }}"><label for="query">Keywords or order ID</label><input id="query" name="q" value="{{ query }}" maxlength="500" placeholder="headphones or ORD-102"><label class="confirmation"><input type="checkbox" name="last_week" value="yes" {% if previous_week %}checked{% endif %}>Last week in the demo</label><button class="secondary" type="submit">Find purchases</button></form></details>
+{% for order in orders %}<a class="purchase-tile" href="{{ url_for('dashboard.demo_order', reference=order.order_id) }}"><strong>{{ order.description }}</strong><span>{{ order.order_id }} &middot; {{ order.purchased_on }}</span><b>{{ order.amount_minor|money }} <small>USD</small></b></a>{% else %}<p class="muted">No matching purchases.</p>{% endfor %}
+<p class="muted small">Scenario date: {{ customer.scenario_date }}. Original amounts may differ from the remaining refundable balance. The agent checks that when inspecting the purchase.</p>
+{% else %}<p class="muted small">Select a demo customer to see their purchases.</p>{% endif %}</aside></div>
+{% endblock %}

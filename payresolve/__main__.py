@@ -8,6 +8,8 @@ from .config import Settings
 from .stripe_gateway import SandboxError, StripeSandbox
 from . import m1
 from . import m2
+from . import benchmark
+from . import catalog
 from .gemini_gateway import ExtractionError
 
 
@@ -17,13 +19,35 @@ def main() -> int:
     commands = parser.add_subparsers(dest="command")
     m1.add_parser(commands)
     m2.add_parser(commands)
+    benchmark.add_parser(commands)
+    catalog.add_parser(commands)
     args = parser.parse_args()
     if args.check_stripe and args.command:
         parser.error("--check-stripe cannot be combined with a command")
-    settings = Settings.from_environment()
     try:
-        if args.command in ("m1", "m2"):
-            result = (m1 if args.command == "m1" else m2).execute(args, settings)
+        if args.command == "benchmark":
+            result = benchmark.execute(args)
+            print(json.dumps(result, indent=2))
+            if args.benchmark_command == "ablations":
+                if result["status"] == "incomplete":
+                    return 2
+                return 0 if result["baseline_passed"] == result["scheduled_pairs"] else 1
+            if args.benchmark_command in ("simulate", "recovery"):
+                if result["status"] == "incomplete":
+                    return 2
+                return 0 if result["passed"] == result["scheduled"] else 1
+            if args.benchmark_command in ("run", "resume"):
+                if result.get("in_progress"):
+                    return 2
+                if result["errors"]:
+                    return 1
+                if result["unattempted"]:
+                    return 2
+                return 0 if result["passed"] == result["scheduled"] else 1
+            return 0
+        settings = Settings.from_environment()
+        if args.command in ("m1", "m2", "demo"):
+            result = {"m1": m1, "m2": m2, "demo": catalog}[args.command].execute(args, settings)
             print(json.dumps(result, indent=2))
             if result.get("status") == "pending":
                 return 2
@@ -34,9 +58,19 @@ def main() -> int:
         elif args.check_stripe:
             print(json.dumps(StripeSandbox(settings.stripe_secret_key).check_connection()))
         else:
-            create_app(settings).run(host="127.0.0.1", port=8000, debug=False, use_reloader=False)
+            from .automation import CaseAutomation
+            app = create_app(settings)
+            recovery = CaseAutomation(settings)
+            recovery.start()
+            try:
+                app.run(host="127.0.0.1", port=8000, debug=False, use_reloader=False)
+            finally:
+                recovery.stop()
     except (SandboxError, ExtractionError) as error:
         print(json.dumps({"error": {"code": error.code, "message": error.message}}), file=sys.stderr)
+        return 1
+    except benchmark.DatasetError as error:
+        print(json.dumps({"error": {"code": error.code, "message": error.message, "issues": error.issues}}), file=sys.stderr)
         return 1
     except sqlite3.Error:
         print(json.dumps({"error": {"code": "storage_unavailable", "message": "SQLite is unavailable or busy. Retry the same operation ID."}}), file=sys.stderr)

@@ -16,6 +16,11 @@ def add_parser(subparsers):
     source.add_argument("--request-id")
     show = commands.add_parser("show", help="Read a saved analysis without contacting either API")
     show.add_argument("run_id")
+    clarify = commands.add_parser("clarify", help="Answer a clarify decision with a complete corrected request; dry run only")
+    clarify.add_argument("analysis_id")
+    clarify.add_argument("--message", required=True)
+    history = commands.add_parser("history", help="Read the original request and all analyses locally")
+    history.add_argument("request_id")
     evaluate = commands.add_parser("eval", help="Evaluate Gemini on labeled synthetic cases; no Stripe calls")
     evaluate.add_argument("--limit", type=int, default=2, help="1 to 20 cases; start with two")
     evaluate.add_argument("--interval", type=float, default=6, help="Seconds between calls (0 to 60)")
@@ -34,6 +39,8 @@ def add_parser(subparsers):
 def execute(args, settings):
     if args.m2_command == "show":
         return AnalysisStore(settings.database_path).analysis(args.run_id)
+    if args.m2_command == "history":
+        return AnalysisStore(settings.database_path).history(args.request_id)
     if args.m2_command in ("approve", "execute", "execution", "verify"):
         store = ExecutionStore(settings.database_path)
         if args.m2_command == "approve":
@@ -55,6 +62,9 @@ def execute(args, settings):
         extractor = FallbackExtractor(extractor, fallback)
     store = AnalysisStore(settings.database_path)
     gateway = StripeSandbox(settings.stripe_secret_key)
-    return AnalysisService(store, extractor, DryRunPolicy(store, gateway.get_payment)).analyze(
+    service = AnalysisService(store, extractor, DryRunPolicy(store, gateway.get_payment))
+    if args.m2_command == "clarify":
+        return service.clarify(args.analysis_id, args.message)
+    return service.analyze(
         message=args.message, request_id=args.request_id,
     )

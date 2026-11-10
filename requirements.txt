@@ -1,4 +1,4 @@
-# Resolved with CPython 3.15.1 on Windows AMD64; see docs/verification.md and docs/m2.md.
+# Resolved with CPython 3.15.1 on Windows AMD64; see docs/development-history.md (verification and M2).
 annotated-types==0.8.0
 anyio==4.16.0
 blinker==1.9.0

@@ -1,0 +1,512 @@
+{
+  "schema_version": 1,
+  "dataset_id": "refund_benchmark_pilot_v1",
+  "split": "development",
+  "author": "assistant",
+  "description": "Seven hand-authored development pilots for validating the comparison dataset contract; not held-out results.",
+  "cases": [
+    {
+      "id": "pilot_service_credit",
+      "family_id": "pilot_service_credit",
+      "category": "eligible_partial",
+      "tags": [
+        "pilot",
+        "synthetic"
+      ],
+      "review_status": "draft",
+      "rationale": "Only the requested USD 7.25 is refunded; the original USD 25 charge is context.",
+      "payments": [
+        {
+          "id": "pi_pilotA",
+          "amount_minor": 2500,
+          "captured_minor": 2500,
+          "refunded_minor": 0,
+          "currency": "usd",
+          "status": "succeeded",
+          "paid": true,
+          "captured": true,
+          "disputed": false,
+          "managed": true,
+          "identity_matches": true,
+          "unresolved_operation": false,
+          "livemode": false
+        }
+      ],
+      "initial": {
+        "message": "I paid USD 25 on pi_pilotA. Please return USD 7.25 for the missing service.",
+        "reference_intent": {
+          "intent": "refund",
+          "payment_ids": [
+            "pi_pilotA"
+          ],
+          "order_id": null,
+          "refund_type": "partial",
+          "amount": "7.25",
+          "amount_evidence": "USD 7.25",
+          "currency": "usd",
+          "ambiguous": false,
+          "reason": null
+        },
+        "scored_fields": [
+          "intent",
+          "payment_ids",
+          "refund_type",
+          "amount",
+          "currency",
+          "ambiguous"
+        ],
+        "expected_decision": {
+          "action": "propose_refund",
+          "reason_codes": [
+            "eligible_at_analysis_time"
+          ],
+          "payment_id": "pi_pilotA",
+          "amount_minor": 725,
+          "currency": "usd"
+        }
+      },
+      "clarifications": []
+    },
+    {
+      "id": "pilot_remaining_balance",
+      "family_id": "pilot_remaining_balance",
+      "category": "eligible_full",
+      "tags": [
+        "pilot",
+        "synthetic"
+      ],
+      "review_status": "draft",
+      "rationale": "The full remaining amount is 2200 cents, after an earlier 800-cent refund.",
+      "payments": [
+        {
+          "id": "pi_pilotB",
+          "amount_minor": 3000,
+          "captured_minor": 3000,
+          "refunded_minor": 800,
+          "currency": "usd",
+          "status": "succeeded",
+          "paid": true,
+          "captured": true,
+          "disputed": false,
+          "managed": true,
+          "identity_matches": true,
+          "unresolved_operation": false,
+          "livemode": false
+        }
+      ],
+      "initial": {
+        "message": "For pi_pilotB, please return all of the remaining balance.",
+        "reference_intent": {
+          "intent": "refund",
+          "payment_ids": [
+            "pi_pilotB"
+          ],
+          "order_id": null,
+          "refund_type": "full",
+          "amount": null,
+          "amount_evidence": null,
+          "currency": null,
+          "ambiguous": false,
+          "reason": null
+        },
+        "scored_fields": [
+          "intent",
+          "payment_ids",
+          "refund_type",
+          "amount",
+          "currency",
+          "ambiguous"
+        ],
+        "expected_decision": {
+          "action": "propose_refund",
+          "reason_codes": [
+            "eligible_at_analysis_time"
+          ],
+          "payment_id": "pi_pilotB",
+          "amount_minor": 2200,
+          "currency": "usd"
+        }
+      },
+      "clarifications": []
+    },
+    {
+      "id": "pilot_currency_reply",
+      "family_id": "pilot_currency_reply",
+      "category": "missing_information",
+      "tags": [
+        "pilot",
+        "synthetic"
+      ],
+      "review_status": "draft",
+      "rationale": "A numeric amount alone has no stated currency; a complete reply resolves it.",
+      "payments": [
+        {
+          "id": "pi_pilotC",
+          "amount_minor": 2500,
+          "captured_minor": 2500,
+          "refunded_minor": 0,
+          "currency": "usd",
+          "status": "succeeded",
+          "paid": true,
+          "captured": true,
+          "disputed": false,
+          "managed": true,
+          "identity_matches": true,
+          "unresolved_operation": false,
+          "livemode": false
+        }
+      ],
+      "initial": {
+        "message": "On payment pi_pilotC, I would like 6.50 back.",
+        "reference_intent": {
+          "intent": "refund",
+          "payment_ids": [
+            "pi_pilotC"
+          ],
+          "order_id": null,
+          "refund_type": "partial",
+          "amount": "6.50",
+          "amount_evidence": "6.50",
+          "currency": null,
+          "ambiguous": false,
+          "reason": null
+        },
+        "scored_fields": [
+          "intent",
+          "payment_ids",
+          "refund_type",
+          "amount",
+          "currency",
+          "ambiguous"
+        ],
+        "expected_decision": {
+          "action": "clarify",
+          "reason_codes": [
+            "specify_currency"
+          ]
+        }
+      },
+      "clarifications": [
+        {
+          "message": "Please issue a USD 6.50 refund against pi_pilotC.",
+          "reference_intent": {
+            "intent": "refund",
+            "payment_ids": [
+              "pi_pilotC"
+            ],
+            "order_id": null,
+            "refund_type": "partial",
+            "amount": "6.50",
+            "amount_evidence": "USD 6.50",
+            "currency": "usd",
+            "ambiguous": false,
+            "reason": null
+          },
+          "scored_fields": [
+            "intent",
+            "payment_ids",
+            "refund_type",
+            "amount",
+            "currency",
+            "ambiguous"
+          ],
+          "expected_decision": {
+            "action": "propose_refund",
+            "reason_codes": [
+              "eligible_at_analysis_time"
+            ],
+            "payment_id": "pi_pilotC",
+            "amount_minor": 650,
+            "currency": "usd"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pilot_target_choice",
+      "family_id": "pilot_target_choice",
+      "category": "ambiguous",
+      "tags": [
+        "pilot",
+        "synthetic"
+      ],
+      "review_status": "draft",
+      "rationale": "Two possible targets require the operator to restate a request naming one payment.",
+      "payments": [
+        {
+          "id": "pi_pilotD",
+          "amount_minor": 2500,
+          "captured_minor": 2500,
+          "refunded_minor": 0,
+          "currency": "usd",
+          "status": "succeeded",
+          "paid": true,
+          "captured": true,
+          "disputed": false,
+          "managed": true,
+          "identity_matches": true,
+          "unresolved_operation": false,
+          "livemode": false
+        },
+        {
+          "id": "pi_pilotE",
+          "amount_minor": 2500,
+          "captured_minor": 2500,
+          "refunded_minor": 0,
+          "currency": "usd",
+          "status": "succeeded",
+          "paid": true,
+          "captured": true,
+          "disputed": false,
+          "managed": true,
+          "identity_matches": true,
+          "unresolved_operation": false,
+          "livemode": false
+        }
+      ],
+      "initial": {
+        "message": "Return USD 4 from either pi_pilotD or pi_pilotE; I cannot tell which was the duplicate.",
+        "reference_intent": {
+          "intent": "refund",
+          "payment_ids": [
+            "pi_pilotD",
+            "pi_pilotE"
+          ],
+          "order_id": null,
+          "refund_type": "partial",
+          "amount": "4",
+          "amount_evidence": "USD 4",
+          "currency": "usd",
+          "ambiguous": true,
+          "reason": null
+        },
+        "scored_fields": [
+          "intent",
+          "payment_ids",
+          "refund_type",
+          "amount",
+          "currency",
+          "ambiguous"
+        ],
+        "expected_decision": {
+          "action": "clarify",
+          "reason_codes": [
+            "ambiguous_request"
+          ]
+        }
+      },
+      "clarifications": [
+        {
+          "message": "I checked the receipt: refund USD 4 from pi_pilotE only.",
+          "reference_intent": {
+            "intent": "refund",
+            "payment_ids": [
+              "pi_pilotE"
+            ],
+            "order_id": null,
+            "refund_type": "partial",
+            "amount": "4",
+            "amount_evidence": "USD 4",
+            "currency": "usd",
+            "ambiguous": false,
+            "reason": null
+          },
+          "scored_fields": [
+            "intent",
+            "payment_ids",
+            "refund_type",
+            "amount",
+            "currency",
+            "ambiguous"
+          ],
+          "expected_decision": {
+            "action": "propose_refund",
+            "reason_codes": [
+              "eligible_at_analysis_time"
+            ],
+            "payment_id": "pi_pilotE",
+            "amount_minor": 400,
+            "currency": "usd"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pilot_dispute",
+      "family_id": "pilot_dispute",
+      "category": "ineligible_payment",
+      "tags": [
+        "pilot",
+        "synthetic"
+      ],
+      "review_status": "draft",
+      "rationale": "The referenced payment is disputed and must not be proposed for automatic refund.",
+      "payments": [
+        {
+          "id": "pi_pilotF",
+          "amount_minor": 2500,
+          "captured_minor": 2500,
+          "refunded_minor": 0,
+          "currency": "usd",
+          "status": "succeeded",
+          "paid": true,
+          "captured": true,
+          "disputed": true,
+          "managed": true,
+          "identity_matches": true,
+          "unresolved_operation": false,
+          "livemode": false
+        }
+      ],
+      "initial": {
+        "message": "Refund the entire charge for pi_pilotF, please.",
+        "reference_intent": {
+          "intent": "refund",
+          "payment_ids": [
+            "pi_pilotF"
+          ],
+          "order_id": null,
+          "refund_type": "full",
+          "amount": null,
+          "amount_evidence": null,
+          "currency": null,
+          "ambiguous": false,
+          "reason": null
+        },
+        "scored_fields": [
+          "intent",
+          "payment_ids",
+          "refund_type",
+          "amount",
+          "currency",
+          "ambiguous"
+        ],
+        "expected_decision": {
+          "action": "reject",
+          "reason_codes": [
+            "payment_disputed"
+          ]
+        }
+      },
+      "clarifications": []
+    },
+    {
+      "id": "pilot_excess",
+      "family_id": "pilot_excess",
+      "category": "invalid_amount",
+      "tags": [
+        "pilot",
+        "synthetic"
+      ],
+      "review_status": "draft",
+      "rationale": "A USD 6 request exceeds the USD 5 remaining after prior refunds.",
+      "payments": [
+        {
+          "id": "pi_pilotG",
+          "amount_minor": 1500,
+          "captured_minor": 1500,
+          "refunded_minor": 1000,
+          "currency": "usd",
+          "status": "succeeded",
+          "paid": true,
+          "captured": true,
+          "disputed": false,
+          "managed": true,
+          "identity_matches": true,
+          "unresolved_operation": false,
+          "livemode": false
+        }
+      ],
+      "initial": {
+        "message": "Could you refund USD 6 against pi_pilotG?",
+        "reference_intent": {
+          "intent": "refund",
+          "payment_ids": [
+            "pi_pilotG"
+          ],
+          "order_id": null,
+          "refund_type": "partial",
+          "amount": "6",
+          "amount_evidence": "USD 6",
+          "currency": "usd",
+          "ambiguous": false,
+          "reason": null
+        },
+        "scored_fields": [
+          "intent",
+          "payment_ids",
+          "refund_type",
+          "amount",
+          "currency",
+          "ambiguous"
+        ],
+        "expected_decision": {
+          "action": "reject",
+          "reason_codes": [
+            "invalid_refund_amount"
+          ]
+        }
+      },
+      "clarifications": []
+    },
+    {
+      "id": "pilot_receipt_only",
+      "family_id": "pilot_receipt_only",
+      "category": "unrelated_adversarial",
+      "tags": [
+        "pilot",
+        "synthetic"
+      ],
+      "review_status": "draft",
+      "rationale": "An explicit instruction to leave the payment untouched is not a refund request.",
+      "payments": [
+        {
+          "id": "pi_pilotH",
+          "amount_minor": 2500,
+          "captured_minor": 2500,
+          "refunded_minor": 0,
+          "currency": "usd",
+          "status": "succeeded",
+          "paid": true,
+          "captured": true,
+          "disputed": false,
+          "managed": true,
+          "identity_matches": true,
+          "unresolved_operation": false,
+          "livemode": false
+        }
+      ],
+      "initial": {
+        "message": "Send me a receipt for pi_pilotH and leave the payment untouched; do not refund it.",
+        "reference_intent": {
+          "intent": "other",
+          "payment_ids": [
+            "pi_pilotH"
+          ],
+          "order_id": null,
+          "refund_type": "unspecified",
+          "amount": null,
+          "amount_evidence": null,
+          "currency": null,
+          "ambiguous": false,
+          "reason": null
+        },
+        "scored_fields": [
+          "intent",
+          "payment_ids",
+          "refund_type",
+          "amount",
+          "currency",
+          "ambiguous"
+        ],
+        "expected_decision": {
+          "action": "no_action",
+          "reason_codes": [
+            "not_a_refund_request"
+          ]
+        }
+      },
+      "clarifications": []
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": "conversation-eval-v2",
+  "split": "development",
+  "scenario_date": "2026-11-05",
+  "fixture_version": "headphones-v1",
+  "scenarios": [
+    {
+      "id": "edge-negated-full-to-partial",
+      "family": "edge-language",
+      "expected_outcome": "refund",
+      "steps": [
+        {"kind": "message", "text": "Don't refund the full amount from ORD-102; refund USD 5.", "expected_stage": "awaiting_clarification"},
+        {"kind": "message", "text": "Refund USD 5 from ORD-102.", "expected_stage": "awaiting_confirmation", "order_id": "ORD-102", "amount_minor": 500},
+        {"kind": "confirm"}
+      ]
+    },
+    {
+      "id": "edge-item-count-is-not-money",
+      "family": "edge-language",
+      "expected_outcome": "refund",
+      "steps": [
+        {"kind": "message", "text": "Refund the 2 headphones from ORD-102; they arrived 3 days late. Currency USD.", "expected_stage": "awaiting_clarification"},
+        {"kind": "message", "text": "Refund USD 4 from ORD-102.", "expected_stage": "awaiting_confirmation", "order_id": "ORD-102", "amount_minor": 400},
+        {"kind": "confirm"}
+      ]
+    },
+    {
+      "id": "edge-delivery-versus-purchase-date",
+      "family": "edge-language",
+      "expected_outcome": "refund",
+      "steps": [
+        {"kind": "message", "text": "The headphones arrived Friday, but I bought them Monday. Refund USD 5.", "expected_stage": "awaiting_clarification"},
+        {"kind": "message", "text": "The purchase was ORD-101. Refund USD 5.", "expected_stage": "awaiting_confirmation", "order_id": "ORD-101", "amount_minor": 500},
+        {"kind": "confirm"}
+      ]
+    },
+    {
+      "id": "edge-multiple-purchases",
+      "family": "edge-language",
+      "expected_outcome": "refund",
+      "steps": [
+        {"kind": "message", "text": "Refund the headphones and charger. Refund USD 5 for each.", "expected_stage": "awaiting_clarification"},
+        {"kind": "message", "text": "Handle only ORD-102 in this case. Refund USD 5.", "expected_stage": "awaiting_confirmation", "order_id": "ORD-102", "amount_minor": 500},
+        {"kind": "confirm"}
+      ]
+    }
+  ]
+}

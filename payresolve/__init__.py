@@ -61,4 +61,6 @@ def create_app(settings: Settings | None = None) -> Flask:
         return jsonify(error={"code": error.name.lower().replace(" ", "_"),
                               "message": error.name}), error.code
 
+    from .dashboard import register_dashboard
+    register_dashboard(app, settings)
     return app

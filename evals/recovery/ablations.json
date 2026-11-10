@@ -1,0 +1,11 @@
+{
+  "version": "recovery-ablations-v1",
+  "review_status": "draft",
+  "description": "Matched local mechanism-removal experiments. Baseline and variant use identical recovery episode specifications; failure outcomes are measured, not manufactured in the oracle.",
+  "pairs": [
+    {"id":"retry_partial","episode_id":"lost_partial","variant":"fresh_retry_key","hypothesis":"Changing the key after a lost partial-refund response can create a second effect when sufficient balance remains."},
+    {"id":"retry_full","episode_id":"lost_full","variant":"fresh_retry_key","hypothesis":"Changing the key after a lost full-refund response may fail recovery even when provider balance constraints prevent a duplicate effect."},
+    {"id":"verify_pending","episode_id":"pending_then_success","variant":"skip_final_verification","hypothesis":"Treating a returned refund ID as success can report a pending refund as verified before a monetary effect exists."},
+    {"id":"verify_failed","episode_id":"failed_is_terminal","variant":"skip_final_verification","hypothesis":"Treating a returned refund ID as success can falsely verify a failed refund, including subsequent cached responses."}
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "schema_version": "conversation-eval-v2",
+  "split": "development",
+  "scenario_date": "2026-11-05",
+  "fixture_version": "headphones-v1",
+  "scenarios": [
+    {
+      "id": "h01-date-split-restart",
+      "family": "held-date-currency-restart",
+      "expected_outcome": "refund",
+      "steps": [
+        {
+          "kind": "message",
+          "text": "Refund the headphones from October 30.",
+          "expected_stage": "awaiting_clarification"
+        },
+        {
+          "kind": "restart"
+        },
+        {
+          "kind": "message",
+          "text": "Just 12, please.",
+          "expected_stage": "awaiting_clarification"
+        },
+        {
+          "kind": "message",
+          "text": "US dollars.",
+          "expected_stage": "awaiting_confirmation",
+          "order_id": "ORD-102",
+          "amount_minor": 1200
+        },
+        {
+          "kind": "confirm"
+        },
+        {
+          "kind": "repeat"
+        }
+      ]
+    }
+  ]
+}

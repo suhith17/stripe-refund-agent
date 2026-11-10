@@ -1,0 +1,343 @@
+{
+  "schema_version": "conversation-eval-v3",
+  "split": "development",
+  "scenario_date": "2026-11-05",
+  "fixture_version": "headphones-v1",
+  "scenarios": [
+    {
+      "id": "provider-balance-changes",
+      "family": "provider-development",
+      "expected_outcome": "blocked_execution",
+      "steps": [
+        {
+          "kind": "message",
+          "text": "Refund USD 10 from ORD-102.",
+          "expected_stage": "awaiting_confirmation",
+          "order_id": "ORD-102",
+          "amount_minor": 1000
+        },
+        {
+          "kind": "provider",
+          "control": {
+            "action": "external_refund",
+            "order_id": "ORD-102",
+            "amount_minor": 5799
+          }
+        },
+        {
+          "kind": "restart"
+        },
+        {
+          "kind": "confirm",
+          "expected_stage": "needs_reconciliation",
+          "expected_error": "invalid_refund_amount"
+        }
+      ]
+    },
+    {
+      "id": "provider-dispute-after-card",
+      "family": "provider-development",
+      "expected_outcome": "blocked_execution",
+      "steps": [
+        {
+          "kind": "message",
+          "text": "Refund USD 10 from ORD-102.",
+          "expected_stage": "awaiting_confirmation",
+          "order_id": "ORD-102",
+          "amount_minor": 1000
+        },
+        {
+          "kind": "provider",
+          "control": {
+            "action": "dispute",
+            "order_id": "ORD-102"
+          }
+        },
+        {
+          "kind": "restart"
+        },
+        {
+          "kind": "confirm",
+          "expected_stage": "needs_reconciliation",
+          "expected_error": "payment_disputed"
+        }
+      ]
+    },
+    {
+      "id": "provider-before-refund",
+      "family": "provider-development",
+      "expected_outcome": "refund",
+      "steps": [
+        {
+          "kind": "message",
+          "text": "Refund USD 10 from ORD-102.",
+          "expected_stage": "awaiting_confirmation",
+          "order_id": "ORD-102",
+          "amount_minor": 1000
+        },
+        {
+          "kind": "provider",
+          "control": {
+            "action": "fault",
+            "fault": "before_refund"
+          }
+        },
+        {
+          "kind": "restart"
+        },
+        {
+          "kind": "confirm",
+          "expected_stage": "needs_reconciliation",
+          "expected_error": "stripe_connection_failed"
+        },
+        {
+          "kind": "restart"
+        },
+        {
+          "kind": "resume"
+        },
+        {
+          "kind": "repeat"
+        }
+      ]
+    },
+    {
+      "id": "provider-after-refund",
+      "family": "provider-development",
+      "expected_outcome": "refund",
+      "steps": [
+        {
+          "kind": "message",
+          "text": "Refund USD 10 from ORD-102.",
+          "expected_stage": "awaiting_confirmation",
+          "order_id": "ORD-102",
+          "amount_minor": 1000
+        },
+        {
+          "kind": "provider",
+          "control": {
+            "action": "fault",
+            "fault": "after_refund"
+          }
+        },
+        {
+          "kind": "restart"
+        },
+        {
+          "kind": "confirm",
+          "expected_stage": "needs_reconciliation",
+          "expected_error": "stripe_connection_failed"
+        },
+        {
+          "kind": "restart"
+        },
+        {
+          "kind": "resume"
+        },
+        {
+          "kind": "repeat"
+        }
+      ]
+    },
+    {
+      "id": "provider-refund-read",
+      "family": "provider-development",
+      "expected_outcome": "refund",
+      "steps": [
+        {
+          "kind": "message",
+          "text": "Refund USD 10 from ORD-102.",
+          "expected_stage": "awaiting_confirmation",
+          "order_id": "ORD-102",
+          "amount_minor": 1000
+        },
+        {
+          "kind": "provider",
+          "control": {
+            "action": "fault",
+            "fault": "refund_read"
+          }
+        },
+        {
+          "kind": "restart"
+        },
+        {
+          "kind": "confirm",
+          "expected_stage": "needs_reconciliation",
+          "expected_error": "stripe_connection_failed"
+        },
+        {
+          "kind": "restart"
+        },
+        {
+          "kind": "resume"
+        },
+        {
+          "kind": "repeat"
+        }
+      ]
+    },
+    {
+      "id": "provider-payment-read",
+      "family": "provider-development",
+      "expected_outcome": "refund",
+      "steps": [
+        {
+          "kind": "message",
+          "text": "Refund USD 10 from ORD-102.",
+          "expected_stage": "awaiting_confirmation",
+          "order_id": "ORD-102",
+          "amount_minor": 1000
+        },
+        {
+          "kind": "provider",
+          "control": {
+            "action": "fault",
+            "fault": "payment_read"
+          }
+        },
+        {
+          "kind": "restart"
+        },
+        {
+          "kind": "confirm",
+          "expected_stage": "needs_reconciliation",
+          "expected_error": "stripe_connection_failed"
+        },
+        {
+          "kind": "restart"
+        },
+        {
+          "kind": "resume"
+        },
+        {
+          "kind": "repeat"
+        }
+      ]
+    },
+    {
+      "id": "provider-pending-settles",
+      "family": "provider-development",
+      "expected_outcome": "refund",
+      "steps": [
+        {
+          "kind": "message",
+          "text": "Refund USD 10 from ORD-102.",
+          "expected_stage": "awaiting_confirmation",
+          "order_id": "ORD-102",
+          "amount_minor": 1000
+        },
+        {
+          "kind": "provider",
+          "control": {
+            "action": "refund_status",
+            "status": "pending"
+          }
+        },
+        {
+          "kind": "restart"
+        },
+        {
+          "kind": "confirm",
+          "expected_stage": "pending"
+        },
+        {
+          "kind": "status",
+          "text": "What is the latest refund status?",
+          "expected_stage": "pending"
+        },
+        {
+          "kind": "provider",
+          "control": {
+            "action": "settle_refund"
+          }
+        },
+        {
+          "kind": "restart"
+        },
+        {
+          "kind": "status",
+          "text": "Has it completed now?",
+          "expected_stage": "verified"
+        },
+        {
+          "kind": "repeat"
+        }
+      ]
+    },
+    {
+      "id": "provider-observed-pending",
+      "family": "provider-development",
+      "expected_outcome": "pending_refund",
+      "steps": [
+        {
+          "kind": "message",
+          "text": "Refund USD 10 from ORD-102.",
+          "expected_stage": "awaiting_confirmation",
+          "order_id": "ORD-102",
+          "amount_minor": 1000
+        },
+        {
+          "kind": "provider",
+          "control": {
+            "action": "refund_status",
+            "status": "pending"
+          }
+        },
+        {
+          "kind": "confirm",
+          "expected_stage": "pending"
+        },
+        {
+          "kind": "restart"
+        },
+        {
+          "kind": "status",
+          "text": "Has the refund completed?",
+          "expected_stage": "pending"
+        },
+        {
+          "kind": "repeat",
+          "expected_stage": "pending"
+        }
+      ]
+    },
+    {
+      "id": "provider-observed-failed",
+      "family": "provider-development",
+      "expected_outcome": "failed_refund",
+      "steps": [
+        {
+          "kind": "message",
+          "text": "Refund USD 10 from ORD-102.",
+          "expected_stage": "awaiting_confirmation",
+          "order_id": "ORD-102",
+          "amount_minor": 1000
+        },
+        {
+          "kind": "provider",
+          "control": {
+            "action": "refund_status",
+            "status": "failed"
+          }
+        },
+        {
+          "kind": "confirm",
+          "expected_stage": "failed"
+        },
+        {
+          "kind": "restart"
+        },
+        {
+          "kind": "status",
+          "text": "Has the refund completed?",
+          "expected_stage": "failed"
+        },
+        {
+          "kind": "repeat",
+          "expected_stage": "failed"
+        }
+      ]
+    }
+  ]
+}

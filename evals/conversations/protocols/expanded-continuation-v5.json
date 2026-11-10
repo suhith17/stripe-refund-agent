@@ -1,0 +1,58 @@
+{
+  "study_id": "expanded-memory-v2-replacement-key-continuation",
+  "status": "declared_before_collection",
+  "prepared_date": "2026-11-09",
+  "reason": "The user saved a replacement Gemini key from another account and confirmed ready. A full structured-agent diagnostic returned HTTP 200. Collect only the 18 untouched primary trials; preserve all earlier failed attempts.",
+  "original_freeze": "evals/conversations/protocols/expanded-freeze-v2.json",
+  "original_export": "evals/conversations/results/expanded-results-v4.json",
+  "original_export_sha256": "2ad0b28eda9feef6edce77896f7a7fbe513c8283e2d681c0c56eb56bfa32ff72",
+  "continuation_command": "tools/continue_expanded_after_cooldown.py",
+  "continuation_command_sha256": "9aa71aa435685020c3313323aa598d7feb3fef139dc55e18736c417dad9ac98c",
+  "original_outcomes": {
+    "scheduled": 172,
+    "attempted": 154,
+    "passed": 136,
+    "provider_failures": 17,
+    "behavior_or_oracle_failures": 1,
+    "unattempted": 18
+  },
+  "source_runs": {
+    "primary": "11edcee5ff884d1e8aa5f0790e27e7de",
+    "backup": "fe2e573dd56a4cc2b5ec71701e9a76ad"
+  },
+  "untouched_by_model": {
+    "gemini-3.5-flash-lite": 18,
+    "gemini-3.1-flash-lite": 0
+  },
+  "earliest_provider_cooldown_utc": "2026-11-10T07:59:58.483892+00:00",
+  "billing_change": {
+    "reported_date_local": "2026-11-09",
+    "user_reported_credit_usd": 5,
+    "authorized_retry_utc": "2026-11-10T00:58:04.285564+00:00",
+    "observed_tier": "not independently confirmed before retry",
+    "local_action": "Clear primary local timer once after replacement-key confirmation and successful structured diagnostic; preserve all original budgets and pacing."
+  },
+  "user_reported_ai_studio_rpd_at_preparation": {
+    "gemini-3.5-flash-lite": "227/500",
+    "gemini-3.1-flash-lite": "165/500"
+  },
+  "quota_interpretation": "The displayed RPD counters are below their limits, but the 429 cause is still unknown. Neither the local 400-request ledger nor the displayed RPD figure overrides the provider cooldown.",
+  "collection_rule": "Only the 18 primary rows still unattempted after E50 are eligible. Preserve every prior attempt, frozen code/oracle, case order, model assignment, 15 RPM and original 400-request ledgers. Clear only the old primary model cooldown once because it belongs to the replaced account. Stop on any fresh 429/access/configuration/worker/budget failure or three consecutive availability failures; pause >=60 seconds after ordinary service errors. No backup calls, no attempted-trial replay.",
+  "interpretation": "This is post-stop collection, not part of the original frozen stop decision. Report its results separately from the E48 stop snapshot and disclose the delay and any further missing trials. Do not attribute score changes solely to application repairs or rank models on different assigned cases.",
+  "stripe_calls": 0,
+  "diagnostic": {
+    "model": "gemini-3.5-flash-lite",
+    "created_at_utc": "2026-11-10T00:57:28.893288+00:00",
+    "http_status": 200,
+    "response_status": "completed",
+    "http_requests": 1,
+    "structured_agent_schema": true,
+    "outside_benchmark": true
+  },
+  "account_change": {
+    "user_confirmed_saved_replacement_key": true,
+    "date_local": "2026-11-09",
+    "credentials_recorded": false,
+    "new_project_billing_tier": "not inspected"
+  }
+}

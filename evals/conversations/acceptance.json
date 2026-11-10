@@ -1,0 +1,15 @@
+{
+  "schema_version": "conversation-acceptance-v1",
+  "id": "restart-repeat-correction",
+  "split": "development",
+  "scenario_date": "2026-11-05",
+  "fixture_version": "headphones-v1",
+  "initial_message": "Refund the headphones I bought last week.",
+  "selection_message": "Friday. Just refund $10.",
+  "correction_message": "Monday instead. Make it $5.",
+  "expected_candidates": ["ORD-101", "ORD-102"],
+  "initial_proposal": {"order_id": "ORD-102", "amount_minor": 1000, "currency": "usd"},
+  "corrected_proposal": {"order_id": "ORD-101", "amount_minor": 500, "currency": "usd"},
+  "phases": ["prepare", "confirm", "recover"],
+  "description": "Prepare through chat; exit process; reload and confirm with a lost response; exit process; recover the same operation, repeat HTTP confirmation, reject another customer, correct a second case and reject its stale card."
+}

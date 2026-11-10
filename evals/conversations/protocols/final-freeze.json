@@ -1,0 +1,25 @@
+{
+  "study_id": "memory-final-v1",
+  "frozen_at": "2026-11-07T17:03:12.180465+00:00",
+  "code_sha256": "0a8050d27e86e02b107056210f74d38ab80137cadf3027af203e11a025589345",
+  "dataset": "evals/conversations/held-out.json",
+  "dataset_sha256": "c4d20ca23cb16ae8ac333bc909485152e79b98ee807f30eb142c0db472d59128",
+  "model": "gemini-3.5-flash-lite",
+  "prompt_version": "refund-agent-v5",
+  "context_version": "case-context-v2",
+  "python": "3.15.1",
+  "tool_budget": 5,
+  "modes": [
+    "history",
+    "structured"
+  ],
+  "scenarios": 10,
+  "repeats": 3,
+  "scheduled_trials": 60,
+  "seed": 0,
+  "evidence_type": "live_gemini_simulated_payments",
+  "stripe_calls": 0,
+  "fixture_count": 3,
+  "development_gate": "Incomplete: latest development run stopped on availability failure; known focused functional regressions pass. Freeze proceeds for the user-requested final study with this limitation disclosed.",
+  "policy": "Preserve failures and unattempted trials; stop on availability failure. No tuning on held-out results. Source or dataset changes require a new study version; affected held-out cases cannot remain unseen."
+}
